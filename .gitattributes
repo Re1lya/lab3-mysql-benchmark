@@ -1,0 +1,7 @@
+*.sh text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.mjs text eol=lf
+# Preserve exact published evidence bytes so SHA-256 manifests survive checkout.
+results/** -text -whitespace
+report/** -text

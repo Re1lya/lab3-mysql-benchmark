@@ -1,0 +1,931 @@
+{
+  "time": 1792297991.873937,
+  "normalization": "CRLF converted to LF before SHA256; no other normalization",
+  "files_per_node": 66,
+  "records": [
+    {
+      "node": 1,
+      "path": "4. SpringAOP/pom.xml",
+      "local_sha256": "2947a5cdeed76ea144cda3940da3c23bd9129e54faa902d4487c1b0bb9851937",
+      "remote_sha256": "2947a5cdeed76ea144cda3940da3c23bd9129e54faa902d4487c1b0bb9851937",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/pom.xml",
+      "local_sha256": "54cbc89d97a1ae9346ae7b0f9bcee81724f5fa66c5e187205370aecacd5fb7ff",
+      "remote_sha256": "54cbc89d97a1ae9346ae7b0f9bcee81724f5fa66c5e187205370aecacd5fb7ff",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/jmeter/jmeter-command.sh",
+      "local_sha256": "9afd898a6b6984bf7d08821bbe0b5edf65a7f737de4037d1302321117933034a",
+      "remote_sha256": "9afd898a6b6984bf7d08821bbe0b5edf65a7f737de4037d1302321117933034a",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/jmeter/name.csv",
+      "local_sha256": "86b589e55a46bac33b6023f563f988d3448305447450ee8e29137766b92c775c",
+      "remote_sha256": "86b589e55a46bac33b6023f563f988d3448305447450ee8e29137766b92c775c",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/jmeter/products.csv",
+      "local_sha256": "c74b4b0ae1665ce598817a76081c3735b60000ab3fdda1b3a82134952fa17717",
+      "remote_sha256": "c74b4b0ae1665ce598817a76081c3735b60000ab3fdda1b3a82134952fa17717",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/jmeter/ReadProduct.jmx",
+      "local_sha256": "d5761da0f111731f825f6305f35b6cef8e3a053fcc07bdd026a657d20ef7ebbc",
+      "remote_sha256": "d5761da0f111731f825f6305f35b6cef8e3a053fcc07bdd026a657d20ef7ebbc",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/jmeter/ReadProduct1.jmx",
+      "local_sha256": "3f609b435841b65f137f3ec6367d819930dd62056250eddff0d2fb9222d9610e",
+      "remote_sha256": "3f609b435841b65f137f3ec6367d819930dd62056250eddff0d2fb9222d9610e",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/jmeter/WriteProduct.jmx",
+      "local_sha256": "53c973b21579704451d40396c73277f8ba681172429cbb48e15276da013262f8",
+      "remote_sha256": "53c973b21579704451d40396c73277f8ba681172429cbb48e15276da013262f8",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/Dockerfile",
+      "local_sha256": "6a766386aed6bb28ace7c3c9a780a7f020e7298ddfb867d8d0afb21098b4c509",
+      "remote_sha256": "6a766386aed6bb28ace7c3c9a780a7f020e7298ddfb867d8d0afb21098b4c509",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/pom.xml",
+      "local_sha256": "4b5f399f8ebbe8b954640f3d6e2ea43b9ea91a3d217cbd053fb7dc83fc2554e0",
+      "remote_sha256": "4b5f399f8ebbe8b954640f3d6e2ea43b9ea91a3d217cbd053fb7dc83fc2554e0",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/conf/docker/productdemoaop-docker.yml",
+      "local_sha256": "a285730e6cd9222c1af24620d8ac9e14a8a87bdb155ac9def39f7b1fe9ff2114",
+      "remote_sha256": "a285730e6cd9222c1af24620d8ac9e14a8a87bdb155ac9def39f7b1fe9ff2114",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/conf/prometheus/prometheus.yml",
+      "local_sha256": "e9ad164a2c3aa07f70c7afbf50f2dd6aeb9d0df0b274fd47f9e4c3c0c3f3161b",
+      "remote_sha256": "e9ad164a2c3aa07f70c7afbf50f2dd6aeb9d0df0b274fd47f9e4c3c0c3f3161b",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/conf/prometheus/rules/recording.yml",
+      "local_sha256": "98f9e2b9b204619e51151715dbf2bd60a0c14c6399412f6de9a4cb27a8908865",
+      "remote_sha256": "98f9e2b9b204619e51151715dbf2bd60a0c14c6399412f6de9a4cb27a8908865",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/CoreApplication.java",
+      "local_sha256": "6b0c60e7be2de5c6f6dc7ddc974354b2a93d15b9c9c0c6c4b7c43a0a4347573c",
+      "remote_sha256": "6b0c60e7be2de5c6f6dc7ddc974354b2a93d15b9c9c0c6c4b7c43a0a4347573c",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/CommonPointCuts.java",
+      "local_sha256": "f776e641999361db80b13c4d7bc7dc2c59cba4d8f9283df5b79cbe43094e81b6",
+      "remote_sha256": "f776e641999361db80b13c4d7bc7dc2c59cba4d8f9283df5b79cbe43094e81b6",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/ControllerAdvice.java",
+      "local_sha256": "9751bb7a7a91dec519e1df3cc4fc83cc0eb1fb4a120c598dd0b482b574e4121a",
+      "remote_sha256": "9751bb7a7a91dec519e1df3cc4fc83cc0eb1fb4a120c598dd0b482b574e4121a",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/ControllerAspect.java",
+      "local_sha256": "49d6303ac3646ad595e68abf0c98f51200e85da3a3a9de37002e87fba4cf8c91",
+      "remote_sha256": "49d6303ac3646ad595e68abf0c98f51200e85da3a3a9de37002e87fba4cf8c91",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/DaoAspect.java",
+      "local_sha256": "75ad3aee990cf3ea6f8a42efac969084a7d3ac7b204d9154d382e8b6ff20f18f",
+      "remote_sha256": "75ad3aee990cf3ea6f8a42efac969084a7d3ac7b204d9154d382e8b6ff20f18f",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/bean/LogInterceptor.java",
+      "local_sha256": "5b54018f3192d10114c95fade212de95fe684226718f7a82109f050e9c315ce9",
+      "remote_sha256": "5b54018f3192d10114c95fade212de95fe684226718f7a82109f050e9c315ce9",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/bean/RequestVariables.java",
+      "local_sha256": "927e1ff647886caad39c96e488f4666fc06f036bb72b9e80bcec84e80b7355f8",
+      "remote_sha256": "927e1ff647886caad39c96e488f4666fc06f036bb72b9e80bcec84e80b7355f8",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/config/SpringMVCConfig.java",
+      "local_sha256": "cd09c6c6cf25ce10b3d7ca583216cbfe94d7d7067b168a7b29e709b2e072d678",
+      "remote_sha256": "cd09c6c6cf25ce10b3d7ca583216cbfe94d7d7067b168a7b29e709b2e072d678",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/exception/BusinessException.java",
+      "local_sha256": "8974ba62fae18e11355c1f65e811ed965c6f3cec20e02d806dbea2eb46350775",
+      "remote_sha256": "8974ba62fae18e11355c1f65e811ed965c6f3cec20e02d806dbea2eb46350775",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/Constants.java",
+      "local_sha256": "5883fca1e8186f08bf1e9ffa8a254cea4327ef735e0e8f36da3c52c547e1a034",
+      "remote_sha256": "5883fca1e8186f08bf1e9ffa8a254cea4327ef735e0e8f36da3c52c547e1a034",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/IdNameTypeVo.java",
+      "local_sha256": "ac3138ff04fdbcea7ac0b73534abeb07b8388e42a23c9eb13720a9a6dd1f4e54",
+      "remote_sha256": "ac3138ff04fdbcea7ac0b73534abeb07b8388e42a23c9eb13720a9a6dd1f4e54",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/ReturnNo.java",
+      "local_sha256": "6fb034f0ff99be42d30aed46cd9bbffdab795485fdecbb4e44e12e296ea47b1f",
+      "remote_sha256": "6fb034f0ff99be42d30aed46cd9bbffdab795485fdecbb4e44e12e296ea47b1f",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/ReturnObject.java",
+      "local_sha256": "e8e00d64a936bb3783b851dcdd8ff415095b22fd9c47f606876993d34a5b18c0",
+      "remote_sha256": "e8e00d64a936bb3783b851dcdd8ff415095b22fd9c47f606876993d34a5b18c0",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/UserToken.java",
+      "local_sha256": "27602d027fb8d48c26be0bc39baf3bf5ccf2bcd6b5ddbe0f5dd1e617e0f487f7",
+      "remote_sha256": "27602d027fb8d48c26be0bc39baf3bf5ccf2bcd6b5ddbe0f5dd1e617e0f487f7",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/util/Common.java",
+      "local_sha256": "b51b3ae381fab9aa1f07a711cf70401a6116e620671c53a26ea9a71cb6f1ffb1",
+      "remote_sha256": "b51b3ae381fab9aa1f07a711cf70401a6116e620671c53a26ea9a71cb6f1ffb1",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/util/JacksonUtil.java",
+      "local_sha256": "41363115ac0ade2fc67ab7d82b6db6149c9290c9d28613c2c551c3dd5ff70798",
+      "remote_sha256": "41363115ac0ade2fc67ab7d82b6db6149c9290c9d28613c2c551c3dd5ff70798",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/validation/NewGroup.java",
+      "local_sha256": "1cf6ee2755d88d672287591c6e3f39c89cb51299783c34f38468701d0fff7d42",
+      "remote_sha256": "1cf6ee2755d88d672287591c6e3f39c89cb51299783c34f38468701d0fff7d42",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/validation/UpdateGroup.java",
+      "local_sha256": "d2e32b343dbc6600f5eadefd92b7323912f3223478a93f7e417b31d65cec0f09",
+      "remote_sha256": "d2e32b343dbc6600f5eadefd92b7323912f3223478a93f7e417b31d65cec0f09",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/logback.xml",
+      "local_sha256": "c31d087606ad12a8e9ff588ebe1a3ebdaa1f4d685254c1a8428ce39515271d0e",
+      "remote_sha256": "c31d087606ad12a8e9ff588ebe1a3ebdaa1f4d685254c1a8428ce39515271d0e",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/ProductDemoAOPApplication.java",
+      "local_sha256": "417bd083fd0a56629420da119a8e94c905c6c1fc05e11d1be167a42ad2673d69",
+      "remote_sha256": "417bd083fd0a56629420da119a8e94c905c6c1fc05e11d1be167a42ad2673d69",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/controller/AdminProductController.java",
+      "local_sha256": "ecf1a9d08fc5ec02a3dd6bea885e8879c003a3231febf2c7a501e4089297ff14",
+      "remote_sha256": "ecf1a9d08fc5ec02a3dd6bea885e8879c003a3231febf2c7a501e4089297ff14",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/controller/ProductController.java",
+      "local_sha256": "f01e94741ccf9617bb024b8e73ce791678fca4c5c429a3c9d2633371b3102092",
+      "remote_sha256": "f01e94741ccf9617bb024b8e73ce791678fca4c5c429a3c9d2633371b3102092",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/OnSaleDao.java",
+      "local_sha256": "5996db9a53d2e06b1e2d083ce6b1d8ab40424bea1478ff1b5945f1b24692a71c",
+      "remote_sha256": "5996db9a53d2e06b1e2d083ce6b1d8ab40424bea1478ff1b5945f1b24692a71c",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/ProductDao.java",
+      "local_sha256": "a0c57be442168c7d45cf69ba1b3739084a2a7818fce08d532a5c46574bcad9f1",
+      "remote_sha256": "a0c57be442168c7d45cf69ba1b3739084a2a7818fce08d532a5c46574bcad9f1",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/GoodsPoMapper.java",
+      "local_sha256": "99d2b59bf0cadbb56dcfecfafb5c511d1950ad7d63a54a8f0c25e99797286b3f",
+      "remote_sha256": "99d2b59bf0cadbb56dcfecfafb5c511d1950ad7d63a54a8f0c25e99797286b3f",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/OnSalePoMapper.java",
+      "local_sha256": "967384a2f886df48c8f975ad4c15e945aa15baab09b79ea204cf90ed565d7df1",
+      "remote_sha256": "967384a2f886df48c8f975ad4c15e945aa15baab09b79ea204cf90ed565d7df1",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/ProductPoMapper.java",
+      "local_sha256": "e691778aacb1f39b6b19374c090f7280e15110bc74d270f387eae3af412460c5",
+      "remote_sha256": "e691778aacb1f39b6b19374c090f7280e15110bc74d270f387eae3af412460c5",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisConfiguration.java",
+      "local_sha256": "bf62f7ef2bbc833eb1ffbd49273ff6d55d9fd3fc0d7cfdd81b95dae56988de0f",
+      "remote_sha256": "bf62f7ef2bbc833eb1ffbd49273ff6d55d9fd3fc0d7cfdd81b95dae56988de0f",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisGoodsRepository.java",
+      "local_sha256": "31cb229352f0b35c20807edbb46ab05e86e8fa38b533c7d08a0c0ff0bcbf0c60",
+      "remote_sha256": "31cb229352f0b35c20807edbb46ab05e86e8fa38b533c7d08a0c0ff0bcbf0c60",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisOnSaleRepository.java",
+      "local_sha256": "676e3d00d4e66fdf06d630ab2f725c1f6e5a1af762ba7e82ca52d941c83f3799",
+      "remote_sha256": "676e3d00d4e66fdf06d630ab2f725c1f6e5a1af762ba7e82ca52d941c83f3799",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisProductRepository.java",
+      "local_sha256": "37ce98fb9cbf880a76afad40f42974afe14fd0a0f65df4e524466e780f1a6d99",
+      "remote_sha256": "37ce98fb9cbf880a76afad40f42974afe14fd0a0f65df4e524466e780f1a6d99",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/ProductService.java",
+      "local_sha256": "d7ee3b1d5be091f73d1ca4ccb060a4c4536550504ae700dcd00ebf600b5cf3de",
+      "remote_sha256": "d7ee3b1d5be091f73d1ca4ccb060a4c4536550504ae700dcd00ebf600b5cf3de",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/controller/dto/ProductDto.java",
+      "local_sha256": "2ab326b43351ba96d160ca2d9c5128c8d5d2c342f8d608bfaec2534c818f92f7",
+      "remote_sha256": "2ab326b43351ba96d160ca2d9c5128c8d5d2c342f8d608bfaec2534c818f92f7",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/bo/OnSale.java",
+      "local_sha256": "a1a3a38e5d2f710604106b7ca3189c2601b1c1aca795c4e2a8a6e40bf0cb55e2",
+      "remote_sha256": "a1a3a38e5d2f710604106b7ca3189c2601b1c1aca795c4e2a8a6e40bf0cb55e2",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/bo/Product.java",
+      "local_sha256": "53bff69ae7321c67ea701969cf6c9f9a9d7ae53ff5bf0cd2d0daa3099a35d0e9",
+      "remote_sha256": "53bff69ae7321c67ea701969cf6c9f9a9d7ae53ff5bf0cd2d0daa3099a35d0e9",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/po/GoodsPo.java",
+      "local_sha256": "d04ddba38ac04bf8abdc02e79ef31db9a33bfe2bbf6520975b97360e5c468987",
+      "remote_sha256": "d04ddba38ac04bf8abdc02e79ef31db9a33bfe2bbf6520975b97360e5c468987",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/po/OnSalePo.java",
+      "local_sha256": "0651f3b4b1b2c9bba81867e4d072ae0c928672b0f2f73db5bc9cf036a7fcea79",
+      "remote_sha256": "0651f3b4b1b2c9bba81867e4d072ae0c928672b0f2f73db5bc9cf036a7fcea79",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/po/ProductPo.java",
+      "local_sha256": "efb8105255f67abfca3853351838171ec811de602a145679cd5bb445ca7d0131",
+      "remote_sha256": "efb8105255f67abfca3853351838171ec811de602a145679cd5bb445ca7d0131",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/vo/CustomerProductVo.java",
+      "local_sha256": "34595d48ba5156f95d755bd3550df6de1d789bd8f1ed838bea26a77365b16b4b",
+      "remote_sha256": "34595d48ba5156f95d755bd3550df6de1d789bd8f1ed838bea26a77365b16b4b",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/vo/OnSaleVo.java",
+      "local_sha256": "ec1947037284928d3d3a56ca050aa5ca669051141de7acb8cb564fbbce8afaac",
+      "remote_sha256": "ec1947037284928d3d3a56ca050aa5ca669051141de7acb8cb564fbbce8afaac",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/vo/ProductVo.java",
+      "local_sha256": "2f84e8be6860c2e10da915a8e9d10356d1805690cc3c5ee8864070cd4ce57cea",
+      "remote_sha256": "2f84e8be6860c2e10da915a8e9d10356d1805690cc3c5ee8864070cd4ce57cea",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/i18n/messages.properties",
+      "local_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "remote_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/i18n/messages_en.properties",
+      "local_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "remote_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/i18n/messages_zh.properties",
+      "local_sha256": "c4d4b6e68eceaecd1875c75dd6eb25410dc15fcccfd3441d78e8b68dfc164341",
+      "remote_sha256": "c4d4b6e68eceaecd1875c75dd6eb25410dc15fcccfd3441d78e8b68dfc164341",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/mybatis/Lab3Mapper.xml",
+      "local_sha256": "a31673ed64985987e5e03cba596b9db6eff332f7067912b377d9b8dcfac2bca0",
+      "remote_sha256": "a31673ed64985987e5e03cba596b9db6eff332f7067912b377d9b8dcfac2bca0",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/test/java/cn/edu/xmu/javaee/productdemoaop/AdminProductControllerTest.java",
+      "local_sha256": "e058121610a34e601614d64e3eb799cf418813784b0033c2190427bc646d660f",
+      "remote_sha256": "e058121610a34e601614d64e3eb799cf418813784b0033c2190427bc646d660f",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "4. SpringAOP/productdemoaop/src/test/java/cn/edu/xmu/javaee/productdemoaop/ProductControllerTest.java",
+      "local_sha256": "d4cc4eee5e326b8adbe2d9f71d1567cfbec64bdade3bec3601a85206e7eb5ab6",
+      "remote_sha256": "d4cc4eee5e326b8adbe2d9f71d1567cfbec64bdade3bec3601a85206e7eb5ab6",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "clonefactory/pom.xml",
+      "local_sha256": "dad4efbbdaa06ad056453a9795278c32649cad9b72a02e6a60b25d7e97df01c9",
+      "remote_sha256": "dad4efbbdaa06ad056453a9795278c32649cad9b72a02e6a60b25d7e97df01c9",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyFrom.java",
+      "local_sha256": "7c5cc6b396a4b95302663d469ea6324a7829e44ef0efc63169b07d9f86a4c828",
+      "remote_sha256": "7c5cc6b396a4b95302663d469ea6324a7829e44ef0efc63169b07d9f86a4c828",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyNotNullFrom.java",
+      "local_sha256": "96354e72c76d9475e39f651365f2da410aab6260092e349f46010cf61631f13a",
+      "remote_sha256": "96354e72c76d9475e39f651365f2da410aab6260092e349f46010cf61631f13a",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyNotNullTo.java",
+      "local_sha256": "1f5a363623d3d60584a844a54c9ad7baa6dea804fd681926c3e18491ccdc4cda",
+      "remote_sha256": "1f5a363623d3d60584a844a54c9ad7baa6dea804fd681926c3e18491ccdc4cda",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyProcessor.java",
+      "local_sha256": "b99de31022edc73434a899dff814b86b80140b5e93b8b0d8a695fe95eb6df84e",
+      "remote_sha256": "b99de31022edc73434a899dff814b86b80140b5e93b8b0d8a695fe95eb6df84e",
+      "status": "match"
+    },
+    {
+      "node": 1,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyTo.java",
+      "local_sha256": "0020ae9f3df0a3e9d1c532a7ccf920ea95b01c9b2d1e449754843d41f7de1526",
+      "remote_sha256": "0020ae9f3df0a3e9d1c532a7ccf920ea95b01c9b2d1e449754843d41f7de1526",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/pom.xml",
+      "local_sha256": "2947a5cdeed76ea144cda3940da3c23bd9129e54faa902d4487c1b0bb9851937",
+      "remote_sha256": "2947a5cdeed76ea144cda3940da3c23bd9129e54faa902d4487c1b0bb9851937",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/pom.xml",
+      "local_sha256": "54cbc89d97a1ae9346ae7b0f9bcee81724f5fa66c5e187205370aecacd5fb7ff",
+      "remote_sha256": "54cbc89d97a1ae9346ae7b0f9bcee81724f5fa66c5e187205370aecacd5fb7ff",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/jmeter/jmeter-command.sh",
+      "local_sha256": "9afd898a6b6984bf7d08821bbe0b5edf65a7f737de4037d1302321117933034a",
+      "remote_sha256": "9afd898a6b6984bf7d08821bbe0b5edf65a7f737de4037d1302321117933034a",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/jmeter/name.csv",
+      "local_sha256": "86b589e55a46bac33b6023f563f988d3448305447450ee8e29137766b92c775c",
+      "remote_sha256": "86b589e55a46bac33b6023f563f988d3448305447450ee8e29137766b92c775c",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/jmeter/products.csv",
+      "local_sha256": "c74b4b0ae1665ce598817a76081c3735b60000ab3fdda1b3a82134952fa17717",
+      "remote_sha256": "c74b4b0ae1665ce598817a76081c3735b60000ab3fdda1b3a82134952fa17717",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/jmeter/ReadProduct.jmx",
+      "local_sha256": "d5761da0f111731f825f6305f35b6cef8e3a053fcc07bdd026a657d20ef7ebbc",
+      "remote_sha256": "d5761da0f111731f825f6305f35b6cef8e3a053fcc07bdd026a657d20ef7ebbc",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/jmeter/ReadProduct1.jmx",
+      "local_sha256": "3f609b435841b65f137f3ec6367d819930dd62056250eddff0d2fb9222d9610e",
+      "remote_sha256": "3f609b435841b65f137f3ec6367d819930dd62056250eddff0d2fb9222d9610e",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/jmeter/WriteProduct.jmx",
+      "local_sha256": "53c973b21579704451d40396c73277f8ba681172429cbb48e15276da013262f8",
+      "remote_sha256": "53c973b21579704451d40396c73277f8ba681172429cbb48e15276da013262f8",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/Dockerfile",
+      "local_sha256": "6a766386aed6bb28ace7c3c9a780a7f020e7298ddfb867d8d0afb21098b4c509",
+      "remote_sha256": "6a766386aed6bb28ace7c3c9a780a7f020e7298ddfb867d8d0afb21098b4c509",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/pom.xml",
+      "local_sha256": "4b5f399f8ebbe8b954640f3d6e2ea43b9ea91a3d217cbd053fb7dc83fc2554e0",
+      "remote_sha256": "4b5f399f8ebbe8b954640f3d6e2ea43b9ea91a3d217cbd053fb7dc83fc2554e0",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/conf/docker/productdemoaop-docker.yml",
+      "local_sha256": "a285730e6cd9222c1af24620d8ac9e14a8a87bdb155ac9def39f7b1fe9ff2114",
+      "remote_sha256": "a285730e6cd9222c1af24620d8ac9e14a8a87bdb155ac9def39f7b1fe9ff2114",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/conf/prometheus/prometheus.yml",
+      "local_sha256": "e9ad164a2c3aa07f70c7afbf50f2dd6aeb9d0df0b274fd47f9e4c3c0c3f3161b",
+      "remote_sha256": "e9ad164a2c3aa07f70c7afbf50f2dd6aeb9d0df0b274fd47f9e4c3c0c3f3161b",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/conf/prometheus/rules/recording.yml",
+      "local_sha256": "98f9e2b9b204619e51151715dbf2bd60a0c14c6399412f6de9a4cb27a8908865",
+      "remote_sha256": "98f9e2b9b204619e51151715dbf2bd60a0c14c6399412f6de9a4cb27a8908865",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/CoreApplication.java",
+      "local_sha256": "6b0c60e7be2de5c6f6dc7ddc974354b2a93d15b9c9c0c6c4b7c43a0a4347573c",
+      "remote_sha256": "6b0c60e7be2de5c6f6dc7ddc974354b2a93d15b9c9c0c6c4b7c43a0a4347573c",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/CommonPointCuts.java",
+      "local_sha256": "f776e641999361db80b13c4d7bc7dc2c59cba4d8f9283df5b79cbe43094e81b6",
+      "remote_sha256": "f776e641999361db80b13c4d7bc7dc2c59cba4d8f9283df5b79cbe43094e81b6",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/ControllerAdvice.java",
+      "local_sha256": "9751bb7a7a91dec519e1df3cc4fc83cc0eb1fb4a120c598dd0b482b574e4121a",
+      "remote_sha256": "9751bb7a7a91dec519e1df3cc4fc83cc0eb1fb4a120c598dd0b482b574e4121a",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/ControllerAspect.java",
+      "local_sha256": "49d6303ac3646ad595e68abf0c98f51200e85da3a3a9de37002e87fba4cf8c91",
+      "remote_sha256": "49d6303ac3646ad595e68abf0c98f51200e85da3a3a9de37002e87fba4cf8c91",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/aop/DaoAspect.java",
+      "local_sha256": "75ad3aee990cf3ea6f8a42efac969084a7d3ac7b204d9154d382e8b6ff20f18f",
+      "remote_sha256": "75ad3aee990cf3ea6f8a42efac969084a7d3ac7b204d9154d382e8b6ff20f18f",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/bean/LogInterceptor.java",
+      "local_sha256": "5b54018f3192d10114c95fade212de95fe684226718f7a82109f050e9c315ce9",
+      "remote_sha256": "5b54018f3192d10114c95fade212de95fe684226718f7a82109f050e9c315ce9",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/bean/RequestVariables.java",
+      "local_sha256": "927e1ff647886caad39c96e488f4666fc06f036bb72b9e80bcec84e80b7355f8",
+      "remote_sha256": "927e1ff647886caad39c96e488f4666fc06f036bb72b9e80bcec84e80b7355f8",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/config/SpringMVCConfig.java",
+      "local_sha256": "cd09c6c6cf25ce10b3d7ca583216cbfe94d7d7067b168a7b29e709b2e072d678",
+      "remote_sha256": "cd09c6c6cf25ce10b3d7ca583216cbfe94d7d7067b168a7b29e709b2e072d678",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/exception/BusinessException.java",
+      "local_sha256": "8974ba62fae18e11355c1f65e811ed965c6f3cec20e02d806dbea2eb46350775",
+      "remote_sha256": "8974ba62fae18e11355c1f65e811ed965c6f3cec20e02d806dbea2eb46350775",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/Constants.java",
+      "local_sha256": "5883fca1e8186f08bf1e9ffa8a254cea4327ef735e0e8f36da3c52c547e1a034",
+      "remote_sha256": "5883fca1e8186f08bf1e9ffa8a254cea4327ef735e0e8f36da3c52c547e1a034",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/IdNameTypeVo.java",
+      "local_sha256": "ac3138ff04fdbcea7ac0b73534abeb07b8388e42a23c9eb13720a9a6dd1f4e54",
+      "remote_sha256": "ac3138ff04fdbcea7ac0b73534abeb07b8388e42a23c9eb13720a9a6dd1f4e54",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/ReturnNo.java",
+      "local_sha256": "6fb034f0ff99be42d30aed46cd9bbffdab795485fdecbb4e44e12e296ea47b1f",
+      "remote_sha256": "6fb034f0ff99be42d30aed46cd9bbffdab795485fdecbb4e44e12e296ea47b1f",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/ReturnObject.java",
+      "local_sha256": "e8e00d64a936bb3783b851dcdd8ff415095b22fd9c47f606876993d34a5b18c0",
+      "remote_sha256": "e8e00d64a936bb3783b851dcdd8ff415095b22fd9c47f606876993d34a5b18c0",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/model/UserToken.java",
+      "local_sha256": "27602d027fb8d48c26be0bc39baf3bf5ccf2bcd6b5ddbe0f5dd1e617e0f487f7",
+      "remote_sha256": "27602d027fb8d48c26be0bc39baf3bf5ccf2bcd6b5ddbe0f5dd1e617e0f487f7",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/util/Common.java",
+      "local_sha256": "b51b3ae381fab9aa1f07a711cf70401a6116e620671c53a26ea9a71cb6f1ffb1",
+      "remote_sha256": "b51b3ae381fab9aa1f07a711cf70401a6116e620671c53a26ea9a71cb6f1ffb1",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/util/JacksonUtil.java",
+      "local_sha256": "41363115ac0ade2fc67ab7d82b6db6149c9290c9d28613c2c551c3dd5ff70798",
+      "remote_sha256": "41363115ac0ade2fc67ab7d82b6db6149c9290c9d28613c2c551c3dd5ff70798",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/validation/NewGroup.java",
+      "local_sha256": "1cf6ee2755d88d672287591c6e3f39c89cb51299783c34f38468701d0fff7d42",
+      "remote_sha256": "1cf6ee2755d88d672287591c6e3f39c89cb51299783c34f38468701d0fff7d42",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/core/src/main/java/cn/edu/xmu/javaee/core/validation/UpdateGroup.java",
+      "local_sha256": "d2e32b343dbc6600f5eadefd92b7323912f3223478a93f7e417b31d65cec0f09",
+      "remote_sha256": "d2e32b343dbc6600f5eadefd92b7323912f3223478a93f7e417b31d65cec0f09",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/logback.xml",
+      "local_sha256": "c31d087606ad12a8e9ff588ebe1a3ebdaa1f4d685254c1a8428ce39515271d0e",
+      "remote_sha256": "c31d087606ad12a8e9ff588ebe1a3ebdaa1f4d685254c1a8428ce39515271d0e",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/ProductDemoAOPApplication.java",
+      "local_sha256": "417bd083fd0a56629420da119a8e94c905c6c1fc05e11d1be167a42ad2673d69",
+      "remote_sha256": "417bd083fd0a56629420da119a8e94c905c6c1fc05e11d1be167a42ad2673d69",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/controller/AdminProductController.java",
+      "local_sha256": "ecf1a9d08fc5ec02a3dd6bea885e8879c003a3231febf2c7a501e4089297ff14",
+      "remote_sha256": "ecf1a9d08fc5ec02a3dd6bea885e8879c003a3231febf2c7a501e4089297ff14",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/controller/ProductController.java",
+      "local_sha256": "f01e94741ccf9617bb024b8e73ce791678fca4c5c429a3c9d2633371b3102092",
+      "remote_sha256": "f01e94741ccf9617bb024b8e73ce791678fca4c5c429a3c9d2633371b3102092",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/OnSaleDao.java",
+      "local_sha256": "5996db9a53d2e06b1e2d083ce6b1d8ab40424bea1478ff1b5945f1b24692a71c",
+      "remote_sha256": "5996db9a53d2e06b1e2d083ce6b1d8ab40424bea1478ff1b5945f1b24692a71c",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/ProductDao.java",
+      "local_sha256": "a0c57be442168c7d45cf69ba1b3739084a2a7818fce08d532a5c46574bcad9f1",
+      "remote_sha256": "a0c57be442168c7d45cf69ba1b3739084a2a7818fce08d532a5c46574bcad9f1",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/GoodsPoMapper.java",
+      "local_sha256": "99d2b59bf0cadbb56dcfecfafb5c511d1950ad7d63a54a8f0c25e99797286b3f",
+      "remote_sha256": "99d2b59bf0cadbb56dcfecfafb5c511d1950ad7d63a54a8f0c25e99797286b3f",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/OnSalePoMapper.java",
+      "local_sha256": "967384a2f886df48c8f975ad4c15e945aa15baab09b79ea204cf90ed565d7df1",
+      "remote_sha256": "967384a2f886df48c8f975ad4c15e945aa15baab09b79ea204cf90ed565d7df1",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/ProductPoMapper.java",
+      "local_sha256": "e691778aacb1f39b6b19374c090f7280e15110bc74d270f387eae3af412460c5",
+      "remote_sha256": "e691778aacb1f39b6b19374c090f7280e15110bc74d270f387eae3af412460c5",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisConfiguration.java",
+      "local_sha256": "bf62f7ef2bbc833eb1ffbd49273ff6d55d9fd3fc0d7cfdd81b95dae56988de0f",
+      "remote_sha256": "bf62f7ef2bbc833eb1ffbd49273ff6d55d9fd3fc0d7cfdd81b95dae56988de0f",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisGoodsRepository.java",
+      "local_sha256": "31cb229352f0b35c20807edbb46ab05e86e8fa38b533c7d08a0c0ff0bcbf0c60",
+      "remote_sha256": "31cb229352f0b35c20807edbb46ab05e86e8fa38b533c7d08a0c0ff0bcbf0c60",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisOnSaleRepository.java",
+      "local_sha256": "676e3d00d4e66fdf06d630ab2f725c1f6e5a1af762ba7e82ca52d941c83f3799",
+      "remote_sha256": "676e3d00d4e66fdf06d630ab2f725c1f6e5a1af762ba7e82ca52d941c83f3799",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/persistence/MyBatisProductRepository.java",
+      "local_sha256": "37ce98fb9cbf880a76afad40f42974afe14fd0a0f65df4e524466e780f1a6d99",
+      "remote_sha256": "37ce98fb9cbf880a76afad40f42974afe14fd0a0f65df4e524466e780f1a6d99",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/ProductService.java",
+      "local_sha256": "d7ee3b1d5be091f73d1ca4ccb060a4c4536550504ae700dcd00ebf600b5cf3de",
+      "remote_sha256": "d7ee3b1d5be091f73d1ca4ccb060a4c4536550504ae700dcd00ebf600b5cf3de",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/controller/dto/ProductDto.java",
+      "local_sha256": "2ab326b43351ba96d160ca2d9c5128c8d5d2c342f8d608bfaec2534c818f92f7",
+      "remote_sha256": "2ab326b43351ba96d160ca2d9c5128c8d5d2c342f8d608bfaec2534c818f92f7",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/bo/OnSale.java",
+      "local_sha256": "a1a3a38e5d2f710604106b7ca3189c2601b1c1aca795c4e2a8a6e40bf0cb55e2",
+      "remote_sha256": "a1a3a38e5d2f710604106b7ca3189c2601b1c1aca795c4e2a8a6e40bf0cb55e2",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/dao/bo/Product.java",
+      "local_sha256": "53bff69ae7321c67ea701969cf6c9f9a9d7ae53ff5bf0cd2d0daa3099a35d0e9",
+      "remote_sha256": "53bff69ae7321c67ea701969cf6c9f9a9d7ae53ff5bf0cd2d0daa3099a35d0e9",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/po/GoodsPo.java",
+      "local_sha256": "d04ddba38ac04bf8abdc02e79ef31db9a33bfe2bbf6520975b97360e5c468987",
+      "remote_sha256": "d04ddba38ac04bf8abdc02e79ef31db9a33bfe2bbf6520975b97360e5c468987",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/po/OnSalePo.java",
+      "local_sha256": "0651f3b4b1b2c9bba81867e4d072ae0c928672b0f2f73db5bc9cf036a7fcea79",
+      "remote_sha256": "0651f3b4b1b2c9bba81867e4d072ae0c928672b0f2f73db5bc9cf036a7fcea79",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/mapper/po/ProductPo.java",
+      "local_sha256": "efb8105255f67abfca3853351838171ec811de602a145679cd5bb445ca7d0131",
+      "remote_sha256": "efb8105255f67abfca3853351838171ec811de602a145679cd5bb445ca7d0131",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/vo/CustomerProductVo.java",
+      "local_sha256": "34595d48ba5156f95d755bd3550df6de1d789bd8f1ed838bea26a77365b16b4b",
+      "remote_sha256": "34595d48ba5156f95d755bd3550df6de1d789bd8f1ed838bea26a77365b16b4b",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/vo/OnSaleVo.java",
+      "local_sha256": "ec1947037284928d3d3a56ca050aa5ca669051141de7acb8cb564fbbce8afaac",
+      "remote_sha256": "ec1947037284928d3d3a56ca050aa5ca669051141de7acb8cb564fbbce8afaac",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/java/cn/edu/xmu/javaee/productdemoaop/service/vo/ProductVo.java",
+      "local_sha256": "2f84e8be6860c2e10da915a8e9d10356d1805690cc3c5ee8864070cd4ce57cea",
+      "remote_sha256": "2f84e8be6860c2e10da915a8e9d10356d1805690cc3c5ee8864070cd4ce57cea",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/i18n/messages.properties",
+      "local_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "remote_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/i18n/messages_en.properties",
+      "local_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "remote_sha256": "6ef472259057e8046949b671f726b79b522591411d4e93982e38d072a25dae36",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/i18n/messages_zh.properties",
+      "local_sha256": "c4d4b6e68eceaecd1875c75dd6eb25410dc15fcccfd3441d78e8b68dfc164341",
+      "remote_sha256": "c4d4b6e68eceaecd1875c75dd6eb25410dc15fcccfd3441d78e8b68dfc164341",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/main/resources/mybatis/Lab3Mapper.xml",
+      "local_sha256": "a31673ed64985987e5e03cba596b9db6eff332f7067912b377d9b8dcfac2bca0",
+      "remote_sha256": "a31673ed64985987e5e03cba596b9db6eff332f7067912b377d9b8dcfac2bca0",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/test/java/cn/edu/xmu/javaee/productdemoaop/AdminProductControllerTest.java",
+      "local_sha256": "e058121610a34e601614d64e3eb799cf418813784b0033c2190427bc646d660f",
+      "remote_sha256": "e058121610a34e601614d64e3eb799cf418813784b0033c2190427bc646d660f",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "4. SpringAOP/productdemoaop/src/test/java/cn/edu/xmu/javaee/productdemoaop/ProductControllerTest.java",
+      "local_sha256": "d4cc4eee5e326b8adbe2d9f71d1567cfbec64bdade3bec3601a85206e7eb5ab6",
+      "remote_sha256": "d4cc4eee5e326b8adbe2d9f71d1567cfbec64bdade3bec3601a85206e7eb5ab6",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "clonefactory/pom.xml",
+      "local_sha256": "dad4efbbdaa06ad056453a9795278c32649cad9b72a02e6a60b25d7e97df01c9",
+      "remote_sha256": "dad4efbbdaa06ad056453a9795278c32649cad9b72a02e6a60b25d7e97df01c9",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyFrom.java",
+      "local_sha256": "7c5cc6b396a4b95302663d469ea6324a7829e44ef0efc63169b07d9f86a4c828",
+      "remote_sha256": "7c5cc6b396a4b95302663d469ea6324a7829e44ef0efc63169b07d9f86a4c828",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyNotNullFrom.java",
+      "local_sha256": "96354e72c76d9475e39f651365f2da410aab6260092e349f46010cf61631f13a",
+      "remote_sha256": "96354e72c76d9475e39f651365f2da410aab6260092e349f46010cf61631f13a",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyNotNullTo.java",
+      "local_sha256": "1f5a363623d3d60584a844a54c9ad7baa6dea804fd681926c3e18491ccdc4cda",
+      "remote_sha256": "1f5a363623d3d60584a844a54c9ad7baa6dea804fd681926c3e18491ccdc4cda",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyProcessor.java",
+      "local_sha256": "b99de31022edc73434a899dff814b86b80140b5e93b8b0d8a695fe95eb6df84e",
+      "remote_sha256": "b99de31022edc73434a899dff814b86b80140b5e93b8b0d8a695fe95eb6df84e",
+      "status": "match"
+    },
+    {
+      "node": 3,
+      "path": "clonefactory/src/main/java/cn/edu/xmu/clonefactory/CopyTo.java",
+      "local_sha256": "0020ae9f3df0a3e9d1c532a7ccf920ea95b01c9b2d1e449754843d41f7de1526",
+      "remote_sha256": "0020ae9f3df0a3e9d1c532a7ccf920ea95b01c9b2d1e449754843d41f7de1526",
+      "status": "match"
+    }
+  ]
+}

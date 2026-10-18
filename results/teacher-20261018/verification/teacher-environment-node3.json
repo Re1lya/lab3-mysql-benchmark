@@ -1,0 +1,8 @@
+{
+  "time": 1792293551.8808868,
+  "command": "source /etc/profile.d/lab3-tools.sh; java -version 2>&1; mvn -v; jmeter -v | tail -8; free -m; grep '^jmeter.reportgenerator.overall_granularity=' /opt/apache-jmeter-5.6.3/bin/user.properties",
+  "node": 3,
+  "exit": 0,
+  "stdout": "openjdk version \"21.0.12.1\" 2026-08-18 LTS\nOpenJDK Runtime Environment Corretto-21.0.12.12.1 (build 21.0.12.1+12-LTS)\nOpenJDK 64-Bit Server VM Corretto-21.0.12.12.1 (build 21.0.12.1+12-LTS, mixed mode, sharing)\nApache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)\nMaven home: /opt/maven-current\nJava version: 21.0.12.1, vendor: Amazon.com Inc., runtime: /opt/java/amazon-corretto-21.0.12.12.1-linux-x64\nDefault locale: en_US, platform encoding: UTF-8\nOS name: \"linux\", version: \"4.15.0-213-generic\", arch: \"amd64\", family: \"unix\"\n    _    ____   _    ____ _   _ _____       _ __  __ _____ _____ _____ ____\n   / \\  |  _ \\ / \\  / ___| | | | ____|     | |  \\/  | ____|_   _| ____|  _ \\\n  / _ \\ | |_) / _ \\| |   | |_| |  _|    _  | | |\\/| |  _|   | | |  _| | |_) |\n / ___ \\|  __/ ___ \\ |___|  _  | |___  | |_| | |  | | |___  | | | |___|  _ <\n/_/   \\_\\_| /_/   \\_\\____|_| |_|_____|  \\___/|_|  |_|_____| |_| |_____|_| \\_\\ 5.6.3\n\nCopyright (c) 1999-2024 The Apache Software Foundation\n\n              total        used        free      shared  buff/cache   available\nMem:           1800         211         621           7         967        1420\nSwap:             0           0           0\njmeter.reportgenerator.overall_granularity=1000\n",
+  "stderr": ""
+}

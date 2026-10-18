@@ -11,7 +11,7 @@
 - `ReadProduct.jmx` 的 CSV 读取、HTTP 200 与 errno=0 断言；`WriteProduct.jmx` 的随机中文字段、随机数、Authorization、HTTP 201 断言和单次循环。
 - CPU 公式：`(1 - sum(rate(node_cpu_seconds_total{mode="idle"}[5m])) by (instance) / sum(rate(node_cpu_seconds_total[5m])) by (instance)) * 100`。
 - 内存公式：`(1 - (node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) / node_memory_MemTotal_bytes) * 100`。
-- 原 13 条记录规则；抓取 2 秒、评估 5 秒、抓取超时 1 秒。
+- 原 13 条记录规则；抓取 2 秒、全局评估 5 秒，但两个规则组均显式设为 30 秒（实际生效）；抓取超时 1 秒。
 - 教师部署有效参数 Tomcat 最大300/最小100；Druid 最大300/最小100/初始100；JPA SQL 输出及业务 DEBUG 日志。
 - 教师原始 product.sql：商品3912、关联30660、上架3914；在专用数据库导入，保留原课程运行库。
 

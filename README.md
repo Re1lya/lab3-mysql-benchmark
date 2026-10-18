@@ -9,7 +9,10 @@
 - 原始 JMX、运行脚本、Prometheus 规则及文件哈希：`reference/teacher-fce17e7/`。
 - 正式方案：[教师版本执行记录](deploy/lab3/TEACHER_PROTOCOL.md)。
 - 原自定义35秒测试仅为前期探索，不用于最终报告。先前 Git 提交保留历史，当前正式入口已改为教师版本。
-- 正式结果正在按教师版本重新采集，完成后本仓库补充原始数据、统计、截图与报告。
+- 正式采集已完成：36组、18000次请求、0次失败；两套实现各16项真实MySQL功能测试通过。
+- [Word/PDF报告](report/) · [原始数据与截图](results/teacher-20261018/) · [逐次统计CSV](results/teacher-20261018/analysis/all-runs.csv) · [分组统计CSV](results/teacher-20261018/analysis/group-summary.csv)
+- 36份HTML报告见结果目录的 `jmeter-html-reports.zip`，JTL以gzip无损压缩保存，并提供SHA-256清单。
+- Node原始JTL统计与JMeter Java报告的样本数、错误数、均值、极值和吞吐量逐组一致。服务器已恢复JPA到原运行库，demo恢复健康。
 
 教师主程序的36个Java文件、Maven配置、clonefactory和商品CSV与先前源码基线934bbaf一致；监控公式、运行参数、随机写载荷及部署资源设置已经按最新版重新核对。
 
@@ -17,7 +20,7 @@
 
 四台 Ubuntu 18.04.6，2核/2GiB，Docker20.10.21；编译/JMeter、应用、MySQL、Prometheus各一台，使用私网发压。JDK21、Maven3.9.16、JMeter5.6.3、SpringBoot4.1.1、MySQL9.2.0、MyBatis3.5.19、MyBatis-Spring4.0.0、Prometheus3.7.3、node-exporter1.10.2。
 
-应用采用教师有效参数：Tomcat最大300/最小100；Druid最大300/最小100/初始100；保留业务DEBUG和JPA SQL输出。JVM按实际2GiB内存调整：应用堆256–512MiB、JMeter堆256–768MiB。Prometheus抓取2秒、评估5秒，CPU rate[5m]和内存Free+Buffers+Cached公式使用教师原件。
+应用采用教师有效参数：Tomcat最大300/最小100；Druid最大300/最小100/初始100；保留业务DEBUG和JPA SQL输出。JVM按实际2GiB内存调整：应用堆256–512MiB、JMeter堆256–768MiB。Prometheus抓取2秒、全局评估5秒，两个规则组实际按显式配置30秒评估；CPU rate[5m]和内存Free+Buffers+Cached公式使用教师原件。
 
 ## 构建与两套实现
 
@@ -68,3 +71,11 @@ jmeter -g ReadProduct-1000-10-1.jtl -o ReadProduct-1000-10-1 -Jjmeter.reportgene
 - [MyBatis Spring SqlSessionTemplate](https://mybatis.org/spring/sqlsession.html)
 - [JMeter HTML Dashboard](https://jmeter.apache.org/usermanual/generating-dashboard.html)
 - [Prometheus HTTP API](https://prometheus.io/docs/prometheus/latest/querying/api/)
+
+## 本次结果与复核
+
+1000总线程、10秒升压、1次循环时，三轮平均响应：读取JPA 11.58ms、MyBatis 8.35ms；写入JPA 1307.02ms、MyBatis 41.33ms。写入存在明显轮间波动，完整三轮均保留。吞吐量受启动节奏约束，不代表最大容量。CPU按教师5分钟窗口，规则组30秒评估，不作为10秒单组瞬时峰值。
+
+本地完整材料采用 `output/playwright/lab3-teacher-20261018` 目录。公开目录按体积压缩JTL和HTML；复算时先解压恢复为原始布局。`analyze-teacher.mjs` 统计原始JTL，`verify-teacher-results.mjs` 独立核对JMeter HTML统计，`plot-teacher.py` 从结果JSON生成图，`build-teacher-report.py` 和 `report-layout.py` 生成Word。离线生成HTML使用 `dashboards.py`，需要指定本机JMeter路径。
+
+恢复后4个节点Ready，服务副本正常，6个监控目标UP、13条记录规则OK；专用库恢复3912条商品，原运行库3913条保持不变。132份节点文件与公开源码按换行标准化后SHA-256一致。对应证据在结果目录 `verification/`。指导书要求的教师认可需实际提交审核。

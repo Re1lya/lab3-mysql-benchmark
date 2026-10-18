@@ -1,0 +1,6 @@
+{
+  "node": 1,
+  "exit": 0,
+  "stdout": "d410456ce658c0090de634ab3f46975db1c432d506581c64caf054d490cbe558  /root/backups/20261018-lab3-teacher/image.tgz\nLoaded image: xmu-javaee/productdemoaop:lab3-teacher-20261018\nsha256:b2e12d68ea0cd4154ab9604b48b474b84cf7b91407f558a89df875e48e9074dc\n",
+  "stderr": ""
+}

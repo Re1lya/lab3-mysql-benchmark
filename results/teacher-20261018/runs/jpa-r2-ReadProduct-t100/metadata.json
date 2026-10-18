@@ -1,0 +1,18 @@
+{
+  "name": "jpa-r2-ReadProduct-t100",
+  "profile": "jpa",
+  "repeat": 2,
+  "operation": "ReadProduct",
+  "threads": 100,
+  "ramp": 10,
+  "loops": 1,
+  "samples": 100,
+  "successful": 100,
+  "errors": 0,
+  "start": 1792294856.614,
+  "end": 1792294866.342,
+  "baseline_count": 3912,
+  "final_count": 3912,
+  "write_count": 0,
+  "teacher_commit": "fce17e7dd6a204b91bbe89181ad6a30b09aa0270"
+}

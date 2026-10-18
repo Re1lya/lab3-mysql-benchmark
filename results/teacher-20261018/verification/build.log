@@ -1,0 +1,265 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for cn.edu.xmu:clonefactory:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 44, column 21
+[WARNING] 'build.plugins.plugin.version' for org.springframework.boot:spring-boot-maven-plugin is missing. @ line 32, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------------------< cn.edu.xmu:clonefactory >-----------------------
+[INFO] Building clonefactory 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ clonefactory ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /root/spring-fundamentals/clonefactory/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ clonefactory ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ clonefactory ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ clonefactory ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ clonefactory ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ clonefactory ---
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ clonefactory ---
+[INFO] Installing /root/spring-fundamentals/clonefactory/pom.xml to /root/.m2/repository/cn/edu/xmu/clonefactory/0.0.1-SNAPSHOT/clonefactory-0.0.1-SNAPSHOT.pom
+[INFO] Installing /root/spring-fundamentals/clonefactory/target/clonefactory-0.0.1-SNAPSHOT.jar to /root/.m2/repository/cn/edu/xmu/clonefactory/0.0.1-SNAPSHOT/clonefactory-0.0.1-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.409 s
+[INFO] Finished at: 2026-10-18T11:09:14+08:00
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] springaop                                                          [pom]
+[INFO] core                                                               [jar]
+[INFO] 
+[INFO] --------------------< cn.edu.xmu.javaee:SpringAOP >---------------------
+[INFO] Building springaop 0.0.1-SNAPSHOT                                  [1/2]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ SpringAOP ---
+[INFO] Installing /root/spring-fundamentals/4. SpringAOP/pom.xml to /root/.m2/repository/cn/edu/xmu/javaee/SpringAOP/0.0.1-SNAPSHOT/SpringAOP-0.0.1-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< cn.edu.xmu.javaee:core >-----------------------
+[INFO] Building core 0.0.5-SNAPSHOT                                       [2/2]
+[INFO]   from core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ core ---
+[INFO] skip non existing resourceDirectory /root/spring-fundamentals/4. SpringAOP/core/src/main/resources
+[INFO] skip non existing resourceDirectory /root/spring-fundamentals/4. SpringAOP/core/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ core ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 18 source files with javac [debug parameters release 21] to target/classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ core ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ core ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ core ---
+[INFO] Building jar: /root/spring-fundamentals/4. SpringAOP/core/target/core-0.0.5-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ core ---
+[INFO] Installing /root/spring-fundamentals/4. SpringAOP/core/pom.xml to /root/.m2/repository/cn/edu/xmu/javaee/core/0.0.5-SNAPSHOT/core-0.0.5-SNAPSHOT.pom
+[INFO] Installing /root/spring-fundamentals/4. SpringAOP/core/target/core-0.0.5-SNAPSHOT.jar to /root/.m2/repository/cn/edu/xmu/javaee/core/0.0.5-SNAPSHOT/core-0.0.5-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] springaop 0.0.1-SNAPSHOT ........................... SUCCESS [  0.146 s]
+[INFO] core 0.0.5-SNAPSHOT ................................ SUCCESS [  3.827 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.364 s
+[INFO] Finished at: 2026-10-18T11:09:19+08:00
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] springaop                                                          [pom]
+[INFO] core                                                               [jar]
+[INFO] productdemoaop                                                     [jar]
+[INFO] 
+[INFO] --------------------< cn.edu.xmu.javaee:SpringAOP >---------------------
+[INFO] Building springaop 0.0.1-SNAPSHOT                                  [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] -----------------------< cn.edu.xmu.javaee:core >-----------------------
+[INFO] Building core 0.0.5-SNAPSHOT                                       [2/3]
+[INFO]   from core/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ core ---
+[INFO] skip non existing resourceDirectory /root/spring-fundamentals/4. SpringAOP/core/src/main/resources
+[INFO] skip non existing resourceDirectory /root/spring-fundamentals/4. SpringAOP/core/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ core ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ core ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ core ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ core ---
+[INFO] 
+[INFO] ------------------< cn.edu.xmu.javaee:productdemoaop >------------------
+[INFO] Building productdemoaop 0.0.1-SNAPSHOT                             [3/3]
+[INFO]   from productdemoaop/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (prepare-agent) @ productdemoaop ---
+[INFO] argLine set to "-javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar=destfile=/root/spring-fundamentals/4. SpringAOP/productdemoaop/target/jacoco.exec"
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ productdemoaop ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 5 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ productdemoaop ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 22 source files with javac [debug parameters release 21] to target/classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] CopyFromProcessor start
+[INFO] Processing: ProductVo
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] Source fields: [gmtCreate, freeThreshold, shopId, otherProduct, status, modifierId, name, creatorId, originalPrice, originPlace, onSaleList, barcode, unit, commissionRatio, modifierName, gmtModified, weight, id, creatorName]cn.edu.xmu.javaee.productdemoaop.dao.bo.Product
+[INFO] Target element: cn.edu.xmu.javaee.productdemoaop.service.vo.ProductVo
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] Processing: OnSale
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.mapper.po.OnSalePo.class}
+[INFO] Source fields: [beginTime, gmtModified, type, invalid, price, quantity, shopId, creator, maxQuantity, endTime, gmtCreate, productId, id, modifier]cn.edu.xmu.javaee.productdemoaop.mapper.po.OnSalePo
+[INFO] Target element: cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale
+[INFO] Processing: Product
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo.class}
+[INFO] Source fields: [weight, shopId, id, originPlace, creator, gmtCreate, name, freeThreshold, barcode, gmtModified, templateId, shopLogisticId, modifier, status, originalPrice, categoryId, unit, commissionRatio]cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo
+[INFO] Target element: cn.edu.xmu.javaee.productdemoaop.dao.bo.Product
+[INFO] Processing: CustomerProductVo
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class, cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale.class}
+[INFO] Source fields: [gmtCreate, freeThreshold, shopId, otherProduct, status, modifierId, name, creatorId, originalPrice, originPlace, onSaleList, barcode, unit, commissionRatio, modifierName, gmtModified, weight, id, creatorName]cn.edu.xmu.javaee.productdemoaop.dao.bo.Product
+[INFO] Target element: cn.edu.xmu.javaee.productdemoaop.service.vo.CustomerProductVo
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] Source fields: [gmtCreate, creatorName, endTime, skuSn, gmtModified, creatorId, modifierId, quantity, beginTime, maxQuantity, id, price, modifierName]cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale
+[INFO] Target element: cn.edu.xmu.javaee.productdemoaop.service.vo.CustomerProductVo
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] CopyToProcessor start
+[INFO] Processing: Product
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo.class}
+[INFO] Target fields: [weight, shopId, id, originPlace, creator, gmtCreate, name, freeThreshold, barcode, gmtModified, templateId, shopLogisticId, modifier, status, originalPrice, categoryId, unit, commissionRatio]cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo
+[INFO] Source element: cn.edu.xmu.javaee.productdemoaop.dao.bo.Product
+[INFO] Processing: ProductDto
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.dao.bo.Product.class}
+[INFO] Target fields: [gmtCreate, freeThreshold, shopId, otherProduct, status, modifierId, name, creatorId, originalPrice, originPlace, onSaleList, barcode, unit, commissionRatio, modifierName, gmtModified, weight, id, creatorName]cn.edu.xmu.javaee.productdemoaop.dao.bo.Product
+[INFO] Source element: cn.edu.xmu.javaee.productdemoaop.controller.dto.ProductDto
+[INFO] CopyNotNullToProcessor start
+[INFO] Processing: OnSale
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.mapper.po.OnSalePo.class}
+[INFO] Target fields: [beginTime, gmtModified, type, invalid, price, quantity, shopId, creator, maxQuantity, endTime, gmtCreate, productId, id, modifier]cn.edu.xmu.javaee.productdemoaop.mapper.po.OnSalePo
+[INFO] Source element: cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale
+[INFO] Processing: Product
+[INFO] Entry: value, value: {cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo.class}
+[INFO] Target fields: [weight, shopId, id, originPlace, creator, gmtCreate, name, freeThreshold, barcode, gmtModified, templateId, shopLogisticId, modifier, status, originalPrice, categoryId, unit, commissionRatio]cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo
+[INFO] Source element: cn.edu.xmu.javaee.productdemoaop.dao.bo.Product
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ productdemoaop ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ productdemoaop ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ productdemoaop ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (post-unit-test) @ productdemoaop ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ productdemoaop ---
+[INFO] Building jar: /root/spring-fundamentals/4. SpringAOP/productdemoaop/target/productdemoaop-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:4.1.1:repackage (repackage) @ productdemoaop ---
+[INFO] Replacing main artifact /root/spring-fundamentals/4. SpringAOP/productdemoaop/target/productdemoaop-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /root/spring-fundamentals/4. SpringAOP/productdemoaop/target/productdemoaop-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] springaop 0.0.1-SNAPSHOT ........................... SUCCESS [  0.002 s]
+[INFO] core 0.0.5-SNAPSHOT ................................ SUCCESS [  1.127 s]
+[INFO] productdemoaop 0.0.1-SNAPSHOT ...................... SUCCESS [  4.736 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.160 s
+[INFO] Finished at: 2026-10-18T11:09:26+08:00
+[INFO] ------------------------------------------------------------------------
+Sending build context to Docker daemon  73.38MB
+Step 1/8 : FROM swr.cn-north-4.myhuaweicloud.com/oomall-javaee/openjdk:21-alpine
+ ---> 97eace17eebd
+Step 2/8 : MAINTAINER mingqiu mingqiu@xmu.edu.cn
+ ---> Using cache
+ ---> 1bdf3cc6151c
+Step 3/8 : WORKDIR /app
+ ---> Using cache
+ ---> fddfb2d96b25
+Step 4/8 : ARG JAR_FILE
+ ---> Using cache
+ ---> fb61b3966db1
+Step 5/8 : ADD ${JAR_FILE} /app/app.jar
+ ---> 1010481f37f4
+Step 6/8 : EXPOSE 8080
+ ---> Running in 4ffbde81e242
+Removing intermediate container 4ffbde81e242
+ ---> 07c6c7e3a695
+Step 7/8 : ENTRYPOINT ["java", "-jar", "app.jar"]
+ ---> Running in 0eaa8756219d
+Removing intermediate container 0eaa8756219d
+ ---> 3eed0f2774f1
+Step 8/8 : CMD []
+ ---> Running in c8444574e417
+Removing intermediate container c8444574e417
+ ---> b2e12d68ea0c
+Successfully built b2e12d68ea0c
+Successfully tagged xmu-javaee/productdemoaop:lab3-teacher-20261018
+sha256:b2e12d68ea0cd4154ab9604b48b474b84cf7b91407f558a89df875e48e9074dc

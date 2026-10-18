@@ -1,0 +1,18 @@
+{
+  "name": "mybatis-r3-WriteProduct-t100",
+  "profile": "mybatis",
+  "repeat": 3,
+  "operation": "WriteProduct",
+  "threads": 100,
+  "ramp": 10,
+  "loops": 1,
+  "samples": 100,
+  "successful": 100,
+  "errors": 0,
+  "start": 1792295576.107,
+  "end": 1792295585.933,
+  "baseline_count": 3912,
+  "final_count": 4012,
+  "write_count": 100,
+  "teacher_commit": "fce17e7dd6a204b91bbe89181ad6a30b09aa0270"
+}
