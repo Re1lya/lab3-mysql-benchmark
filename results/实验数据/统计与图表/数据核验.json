@@ -1,0 +1,7 @@
+{
+  "verified_runs": 18,
+  "requests": 31200,
+  "jtl_hashes_unchanged": true,
+  "jmeter_counts_mean_range_throughput_match": true,
+  "database_counts_match": true
+}

@@ -1,6 +1,0 @@
-{
-  "node": 3,
-  "exit": 0,
-  "stdout": "PROFILE=jpa\n0\n[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.23 s -- in cn.edu.xmu.javaee.productdemoaop.ProductControllerTest\n[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.598 s -- in cn.edu.xmu.javaee.productdemoaop.AdminProductControllerTest\n[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0\nPROFILE=mybatis\n0\n[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.688 s -- in cn.edu.xmu.javaee.productdemoaop.ProductControllerTest\n[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.486 s -- in cn.edu.xmu.javaee.productdemoaop.AdminProductControllerTest\n[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0\n",
-  "stderr": ""
-}

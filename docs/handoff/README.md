@@ -1,9 +1,5 @@
-# 实验三操作手册与材料目录
+# 验收材料导航
 
-- [按指导书步骤编排的操作手册](HANDOFF_MANUAL.md)（另有同目录Word、PDF）。
-- [完整材料包文件导航](HANDOFF_README.md)：报告、读写对比实验、参考样例负载测试、功能测试及截图的位置。
-- [测试组索引](测试组索引.csv)：全部90组的参数和原始数据路径。
+[操作手册](HANDOFF_MANUAL.md)按实验三步骤说明部署、测试和验收展示，另附Word/PDF。[材料包README](HANDOFF_README.md)说明目录用途。
 
-索引中的中文路径对应本地完整材料包。本仓库的基本测试在 `results/teacher-20261018/runs`，扩展测试在 `results/supplement-20261018/runs`；原始JTL以 `samples.jtl.gz` 无损压缩保存。实验报告在 `report/`。
-
-完整材料包的原始JTL、测试组目录、监控数据和截图均采用中文名称；测试组索引中的“原始组名”可对应本仓库的采集目录。旧35秒探索方案已移除。
+原始数据在[实验数据](../../results/实验数据/原始数据/)，按JPA读取、JPA写入、MyBatis读取、MyBatis写入及Prometheus监控分开。共18组，统一保留原采集第一轮。

@@ -1,7 +1,0 @@
-{
-  "time": 1792292976.8985217,
-  "node": 4,
-  "exit": 0,
-  "stdout": "Checking /etc/prometheus/prometheus.yml\n  SUCCESS: 1 rule files found\n SUCCESS: /etc/prometheus/prometheus.yml is valid prometheus config file syntax\n\nChecking /etc/prometheus/rules/recording.yml\n  SUCCESS: 13 rules found\n\nb573214d89e8\n02dbf03210523be719bb2f6cce0f255370864106d6d1335ed1e4cfcd2adfb1de  /root/prometheus/rules/recording.yml\n",
-  "stderr": ""
-}

@@ -227,7 +227,7 @@ node:memory_usage_percent
 
 对应指导书第 3 页第 5 步。正式采集前先确认应用 profile、专用库初始行数和监控健康。在 CDWY1 记录 demo 原运行状态后执行 docker stop demo，避免与压测争抢资源；结束后按原状态恢复。
 
-### 1 按指导书运行一组测试
+### 1 按测试计划运行一组测试
 
 以下命令在 CDWY3 执行。先将测试计划及 CSV 复制到全新目录，以免覆盖旧结果。PROFILE 按当前应用实际实现填写 jpa 或 mybatis，REP 为重复轮次。
 
@@ -242,12 +242,12 @@ mkdir -p "$WORK"
 cp "$SRC/ReadProduct.jmx" "$SRC/WriteProduct.jmx" "$SRC/products.csv" "$SRC/name.csv" "$SRC/jmeter-command.sh" "$WORK/"
 cd "$WORK"
 date -Is > read-start.txt
-sh jmeter-command.sh ReadProduct 1000 10 1 > read-console.log 2>&1
+sh jmeter-command.sh ReadProduct 1000 10 2 > read-console.log 2>&1
 date -Is > read-end.txt
 tail -10 read-console.log
 ```
 
-参数依次是计划名、总线程数、升压秒数、循环次数。预期生成 ReadProduct-1000-10-1.jtl 和 ReadProduct-1000-10-1/index.html，记录1000次请求，业务断言失败0。下载整个 HTML 目录后打开 index.html，不能只下载单个 HTML 文件。保存终端汇总与 Statistics、响应时间、吞吐量页面截图。
+参数依次是计划名、总线程数、升压秒数、循环次数。预期生成 ReadProduct-1000-10-2.jtl 和 ReadProduct-1000-10-2/index.html，记录2000次请求，业务断言失败0。下载整个 HTML 目录后打开 index.html，不能只下载单个 HTML 文件。保存终端汇总与 Statistics、响应时间、吞吐量页面截图。
 
 读测试后再次确认数据库仍为3912条商品，再执行写测试：
 
@@ -261,7 +261,7 @@ date -Is > write-end.txt
 tail -10 write-console.log
 ```
 
-预期生成 WriteProduct-1000-10-1.jtl 和对应 HTML 目录。写入成功1000次时，商品应增至4912条。记录实际成功数与新增行数是否一致。上述是现场演示命令；归档时将各组 JTL 按“实现、读写、线程、升压、循环、轮次”命名，保持内容不变，同时保存该组日志、起止时间和参数。
+预期生成 WriteProduct-1000-10-1.jtl 和对应 HTML 目录。写入成功1000次时，商品应增至4912条。记录实际成功数与新增行数是否一致。归档时按实现、操作和参数命名JTL，保留原始内容。指导书的1000-10-1是运行示例；本次读取按参考样例使用1000-10-2，写入使用1000-10-1。
 
 ### 2 每组之间复位数据
 
@@ -278,33 +278,28 @@ SQL
 
 预期恢复3912/5461。每轮都检查初始条件。若业务程序更新或删除了原始行，应从专用库备份恢复，不能仅删除新增行。
 
-### 3 完成JPA与MyBatis对比矩阵
+### 3 完成要求的对比测试
 
-| 测试 | 接口 | 总线程数 | 升压 | 循环 | 重复 |
+| 操作 | 总线程数 | 升压 | 循环 | 实现 | 提交组数 |
 | --- | --- | --- | --- | --- | --- |
-| 读写对比实验 | 读和写 | 100、400、1000 | 10秒 | 1 | 各3轮 |
-| 样例负载读取 | 读 | 1000、1050、1100、1150、1200 | 10秒 | 2 | 各3轮 |
-| 样例负载写入 | 写 | 1000、1100、1200、1300 | 10秒 | 1 | 各3轮 |
+| 读取 | 1000、1050、1100、1150、1200 | 10秒 | 2 | JPA、MyBatis | 10 |
+| 写入 | 1000、1100、1200、1300 | 10秒 | 1 | JPA、MyBatis | 8 |
 
-每项都执行 jpa 和 mybatis。更换线程数、循环数时调整脚本参数；更换实现先按第四节部署并等待健康。每次重复创建新的 WORK，不重复使用已有 JTL/HTML 路径。基本测试36组18000次请求，扩展测试54组93600次请求，共90组111600次请求。
+按上表修改jmeter-command.sh的线程参数。每次新建WORK目录，切换实现先按第四节部署并等待健康；每组前后核对数据库行数，写入后按上一节复位。两种实现使用相同接口和参数，由此完成JPA性能测试、MyBatis读写比较及框架对比。
 
-现有完整采集由 teacher-benchmark.py 和 supplement-benchmark.py 完成，配合 run-teacher-case.sh 与 run-supplement-case.sh。程序完成数据复位、参数记录、监控导出和服务恢复。原采集顺序及时间保存在过程记录；首次分组前等待300秒，组前等待15秒，组后等待12秒。
+本次提交统一保留已采集的第一轮，共18组31200次请求。读取共22000次，写入共9200次；不再纳入100/400线程或第二、第三轮。现场重新演示应保存到新目录，不覆盖提交数据。
 
-如果重新执行完整自动采集，复制控制程序并设置新的 EV、BACK、REMOTE 目录，修改运行器的 out 路径和调用文件名，创建 BACK 目录。不能删除旧 experiment-started.json 强行重跑。公开 remote.py 需要 LAB3_HOSTS_JSON、SSH_USER、SSH_PASS 环境变量及 paramiko；密码只从本机环境读取。
+### 4 保存测试数据和监控
 
-控制程序原 api 函数使用本机19090认证代理。换电脑执行时，可改用第五节19091隧道，并在新控制程序中给 urllib.request.Request 添加 Basic Authorization，从 PROM_USER、PROM_PASSWORD 环境变量读取用户名和密码。先验证 targets/rules和小样本采集，再执行完整矩阵；历史控制程序不是跨电脑免配置入口。
-
-### 4 保存原始数据和监控
-
-每组保存原始 JTL、JMeter 控制台及诊断日志、起止时间、实现、线程、升压、循环、重复序号、成功数和数据库前后行数。自动采集的 metadata.json 保存这些参数；targets-before/after.json 保存目标状态；采集时使用 prometheus-NN.json 保存查询及原始时序，查询窗口为开始前15秒到结束后10秒，步长2秒。交付包保留活跃线程、CPU、内存三项，并用中文文件名标注。
-
-手动执行时，除页面截图外，应按对应起止时间调用 Prometheus query_range 保存 JSON。以下在建立隧道的本机终端执行；START、END 替换为该组实际 Unix 秒时间戳，curl -u admin 会交互询问密码：
+每组保存JMeter生成的原始JTL、测试参数和数据库前后行数。按该组起止时间导出第五节的三项Prometheus查询，窗口覆盖测试前后。通过query_range接口保存JSON，例如在已建立隧道的本机执行：
 
 ```bash
 curl -u admin -G 'http://127.0.0.1:19091/api/v1/query_range' --data-urlencode 'query=node:cpu_usage_percent' --data-urlencode 'start=START' --data-urlencode 'end=END' --data-urlencode 'step=2' -o cpu.json
 ```
 
-对内存、线程查询重复导出到不同文件。Windows PowerShell 使用 curl.exe，避免命令别名。三项查询可参照现有组中活跃线程监控.json、CPU使用率监控.json、内存使用率监控.json 的 query 字段。
+START、END替换为实际Unix秒时间戳。对内存、活跃线程分别导出；Windows PowerShell使用curl.exe。材料包将同组的三项原始查询结果和测试参数放在一个中文监控JSON中，便于对应JTL。
+
+保存JMeter测试报告截图；环境配置截图另存。网页报告保留整个目录，整理时合成一个ZIP，查看前整体解压。
 
 ### 5 结束并恢复服务
 
@@ -321,26 +316,42 @@ curl -fsS http://127.0.0.1:8080/actuator/health
 
 检查专用库3912条、原运行库3913条、应用UP、监控6目标UP、13条规则OK，demo回到原状态，保存截图。若本次构建无法启动，可用 APP_IMAGE 指定第一节保存的 lab3/app:before-时间戳，恢复备份配置后重新部署。异常退出也要完成恢复检查。
 
-## 七 整理数据和提交报告
+## 七 验收展示与数据说明
 
-对应指导书第 4 页。提交程序Git地址、原始JTL和实验报告。本组仓库为 https://github.com/Re1lya/lab3-mysql-benchmark 。各材料的位置以完整材料包根目录 README 为准。
+对应指导书第4页：提交实验程序Git地址、原始JTL和实验报告。材料包根目录README列明每个目录对应的实验内容。
 
-### 1 数据分析
+### 1 验收展示顺序
 
-报告的基本测试对应材料包“01_读写对比实验”，扩展测试对应“02_参考样例负载测试”，两批分别统计。按每组原始 elapsed 计算均值、P95等分位数、最大值和吞吐量，保留三轮重复结果。总线程数不等于持续活跃并发数；吞吐量也不直接代表系统最大容量。
+| 展示内容 | 打开什么 | 核对什么 |
+| --- | --- | --- |
+| 环境与部署 | 四节点及服务状态；过程截图/环境配置 | 编译、应用、MySQL、监控分工，服务正常 |
+| JPA性能测试 | 原始数据/01_JPA读取、02_JPA写入 | 读取5组、写入4组的原始JTL |
+| MyBatis读写对比 | 原始数据/03_MyBatis读取、04_MyBatis写入；数据统计 | 相同线程档位的读写结果；与JPA相同操作对比 |
+| JMeter测试结果 | 解压JMeter测试报告.zip，打开对应组index.html | 请求数、错误数、响应时间统计与趋势 |
+| 运行监控 | 原始数据/05_Prometheus监控 | 对应组的JVM活跃线程、CPU和内存查询结果 |
+| 程序和报告 | 实验报告；程序Git地址 | 代码、实验设计、结果和图表相互对应 |
 
-扩展测试的预设判据为：全部请求中至少80%同时满足业务成功和 elapsed≤40ms，一个配置三轮均满足才算通过。原报告18个扩展配置中13个通过；未达标轮次原始数据同样保存。elapsed-Connect仅作辅助指标，不等于SQL执行时间。
+程序地址：https://github.com/Re1lya/lab3-mysql-benchmark
 
-统计脚本为 analyze-teacher.mjs、analyze-supplement.mjs，独立复核脚本为 verify-teacher-results.mjs、verify-supplement-results.mjs。绘图脚本为 plot-teacher.py、plot-supplement.py，报告脚本为 build-teacher-report.py。这些脚本使用固定证据目录；复算前按完整性校验/文件名对照表.csv，把整理后文件复制回独立工作目录内的原路径。对照实验和样例负载的目录分别为 output/playwright/lab3-teacher-20261018 和 output/playwright/lab3-supplement-20261018。原始JTL只读保存，不修改后沿用旧统计。
+### 2 数据各代表什么
 
-### 2 验收材料
+| 数据或字段 | 含义 |
+| --- | --- |
+| JTL的一行 | 一次HTTP请求的记录 |
+| timeStamp | 请求发起时间，Unix毫秒时间戳 |
+| elapsed | 完整响应耗时，毫秒；报告均值与百分比使用它 |
+| Connect | JMeter记录的连接建立耗时，毫秒 |
+| responseCode与success | HTTP响应码与测试计划断言是否通过 |
+| 平均响应时间 | 该组全部请求elapsed的平均值 |
+| P95 | 约95%的请求耗时不超过该数值 |
+| 40ms内成功比例 | 成功且elapsed≤40ms的请求数÷全部请求数 |
+| JVM活跃线程 | 应用进程中存活的线程数 |
+| CPU、内存使用率 | 按配置的Prometheus规则计算的节点资源指标 |
 
-报告保持精简，解释环境、设计、结果和原因；原始文件单独提交，使用测试组索引定位。现有材料含90份JTL、90份JMeter HTML和164张过程截图。过程截图包括实际页面与明确标注的日志页面，统计图另存。现场新测数据标记新日期，不覆盖已有报告的采集记录。
+线程数×循环次数等于本计划的预期请求数。例如1200-10-2读取为2400次，1300-10-1写入为1300次。对比同一操作时两种实现参数一致。样例的读循环为2、写循环为1，查看读写比较时按表中实际参数理解。
 
-解压完整材料包后，使用Python3执行文件校验：
+原始数据/测试组索引.csv对应每组的JTL、监控文件和网页报告目录。JTL由JMeter直接生成；监控来自Prometheus接口；数据统计中的CSV由原始记录计算。原始JTL只读保存，不在Excel中另存覆盖。
 
-```bash
-python '完整性校验/校验文件.py'
-```
+### 3 现场演示一组测试
 
-查看顺序为：报告中的测试项 → 测试组索引 → 中文命名的JTL和测试参数与数据库核验.json → 对应JMeter HTML → 监控JSON及截图。功能测试结果另见过程记录/01_读写对比实验/功能测试/下的JPA功能测试.log、MyBatis功能测试.log和功能测试汇总.json，两套实现各16项通过。
+先确认当前profile及初始商品3912行，再按第六节运行一组读取或写入。展示终端汇总、新生成的JTL和HTML报告，以及同一时间段的Prometheus查询。写入后核对新增行数，复位数据并恢复实验前服务状态。现场数据使用新日期目录，既有报告数据仍保留原采集日期。

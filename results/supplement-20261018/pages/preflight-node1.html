@@ -1,9 +1,0 @@
-<meta charset="utf-8"><style>body{font:17px Arial,Microsoft YaHei;margin:32px;background:#f7f8fa;color:#17243a}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:16px Consolas,monospace;background:white;padding:20px;border:1px solid #ccd5df;line-height:1.45}h1{font-size:26px}</style><h1>Cluster state before supplementary tests</h1><p>Recorded configuration or command output rendered as a page. Not a native terminal screenshot.</p><p>Source: logs/preflight-node1.json</p><pre>NAME      SERVICES   ORCHESTRATOR
-lab       4          Swarm
-ID             NAME                 MODE         REPLICAS   IMAGE                                                                                                                          PORTS
-khquntke895s   lab_mysql            replicated   1/1        swr.cn-north-4.myhuaweicloud.com/oomall-javaee/mysql@sha256:2628694417009017902fb7c7036c6c45eef9d59587ddaa50dd2414d9ac59533c   *:3306-&gt;3306/tcp
-f460c45zv5mq   lab_node-exporter    global       4/4        lab3/node-exporter:20261017                                                                                                    
-rkxn2cswgyto   lab_productdemoaop   replicated   1/1        xmu-javaee/productdemoaop:lab3-teacher-20261018                                                                                *:8080-&gt;8080/tcp
-rtr3gtgsqsnu   lab_prometheus       replicated   1/1        lab3/prometheus:20261017                                                                                                       
-true healthy
-</pre>

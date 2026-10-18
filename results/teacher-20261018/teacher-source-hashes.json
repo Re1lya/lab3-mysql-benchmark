@@ -1,8 +1,0 @@
-{
-  "jmeter/ReadProduct.jmx": "1f23f942cdeab9f8d94c572044203187a25860aec1dbf76f7d0f3f8c8524d9de",
-  "jmeter/WriteProduct.jmx": "a2d91f8f9afd533aed675a2410b973ae504b74893ca7641fbda31fe78dee6b20",
-  "jmeter/jmeter-command.sh": "e5d527efedb9991fce19614fc6c7e35731069d6d286a41f57c39b35c2e9cacd8",
-  "conf/prometheus/rules/recording.yml": "02dbf03210523be719bb2f6cce0f255370864106d6d1335ed1e4cfcd2adfb1de",
-  "conf/prometheus/prometheus.yml": "60b4fb318b71f4198ca1cc98e6b6b10f64899c3be8ff0838673a63a36a9e5e85",
-  "conf/mysql/sql/product.sql": "fb73b9b2b0656305001066d9c3ba913f4b4c5b5a70f6eb1bf1a3bf09b5734cb1"
-}
