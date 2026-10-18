@@ -92,6 +92,6 @@ jmeter -g ReadProduct-1000-10-1.jtl -o ReadProduct-1000-10-1 -Jjmeter.reportgene
 
 18种配置中13种三轮均满足目标。MyBatis读取所有已测档位均满足目标；写入1000、1100、1200线程三轮均满足，1300线程存在一轮未满足。JPA的达标情况非单调，需结合应用预热和运行顺序解释，不能给出唯一容量临界点。上述结果描述本次环境和请求模型。
 
-补测脚本为 `supplement-benchmark.py` 与 `run-supplement-case.sh`，保留原JMX、应用镜像和监控公式。`analyze-supplement.mjs`、`verify-supplement-results.mjs`、`plot-supplement.py`用于统计、交叉核验和绘图；`supplement-report.py`将补测结果写入最终报告。所有脚本均在 `deploy/lab3/`。
+补测脚本为 `supplement-benchmark.py` 与 `run-supplement-case.sh`，保留原JMX、应用镜像和监控公式。`analyze-supplement.mjs`、`verify-supplement-results.mjs`、`plot-supplement.py`用于统计、交叉核验和绘图；`build-teacher-report.py`直接整合两批结果，生成精简报告；`supplement-report.py`保留详细版的补测排版逻辑。所有脚本均在 `deploy/lab3/`。
 
-分析脚本读取原始JTL；公开目录的JTL需先解压，并按脚本中本地证据目录布局放置。统计可使用Node.js 22；绘图、报告生成另需Python、matplotlib和python-docx。最终报告同时呈现两批90组结果，保留逐轮数据与局限说明。
+分析脚本读取原始JTL；公开目录的JTL需先解压，并按脚本中本地证据目录布局放置。统计可使用Node.js 22；绘图、报告生成另需Python、matplotlib和python-docx。最终报告按样例结构精简为10页，呈现两批90组测试的主要结果、代表性图表和结论；逐轮明细、完整截图与监控数据保留在材料目录。
