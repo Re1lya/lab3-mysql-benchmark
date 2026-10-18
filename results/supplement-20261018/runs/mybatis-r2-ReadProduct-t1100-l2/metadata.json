@@ -1,0 +1,18 @@
+{
+  "name": "mybatis-r2-ReadProduct-t1100-l2",
+  "profile": "mybatis",
+  "repeat": 2,
+  "operation": "ReadProduct",
+  "threads": 1100,
+  "ramp": 10,
+  "loops": 2,
+  "samples": 2200,
+  "successful": 2200,
+  "errors": 0,
+  "start": 1792300980.947,
+  "end": 1792300990.68,
+  "baseline_count": 3912,
+  "final_count": 3912,
+  "write_count": 0,
+  "teacher_commit": "fce17e7dd6a204b91bbe89181ad6a30b09aa0270"
+}

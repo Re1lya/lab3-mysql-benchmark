@@ -39,4 +39,26 @@ for op in ['ReadProduct','WriteProduct']:
  for ax,title,ylabel in zip(axes2.flat,['JVM live threads','Application CPU: rate[5m]','Application memory usage','Load-generator CPU: rate[5m]'],['Threads','CPU (%)','Memory (%)','CPU (%)']):
   ax.set(title=title,xlabel='Seconds since first request',ylabel=ylabel);ax.axvspan(0,10,color='#dddddd',alpha=.3);ax.grid(alpha=.2);ax.legend()
  fig2.suptitle(op+' / repeat 3; CPU values include the preceding 5 minutes',fontsize=10);save(fig2,op+'-monitoring')
+fig,axes=plt.subplots(1,2,figsize=(10,3.6))
+opcolors={'ReadProduct':'#2166ac','WriteProduct':'#d6604d'}
+for ax,metric,title in zip(axes,['mean_ms','p95_ms'],['Mean response time','Mean of per-run P95']):
+ for op,label in [('ReadProduct','Read'),('WriteProduct','Write')]:
+  a=sorted([g for g in D['groups'] if g['profile']=='mybatis' and g['operation']==op],key=lambda g:g['threads'])
+  ax.errorbar([g['threads'] for g in a],[g[metric+'_mean'] for g in a],yerr=[g[metric+'_sd'] for g in a],label=label,color=opcolors[op],marker='o',capsize=4)
+ ax.set(title=title,xlabel='Total threads / 10-second ramp / 1 iteration',ylabel='Response time (ms)',xticks=[100,400,1000]);ax.grid(alpha=.2);ax.legend()
+fig.suptitle('MyBatis read vs write / three repeats / error bars = sample SD',fontsize=10)
+save(fig,'mybatis-read-write')
+fig,axes=plt.subplots(3,2,figsize=(10,7.2))
+for pair,n in zip(axes,[100,400,1000]):
+ for op,label in [('ReadProduct','Read'),('WriteProduct','Write')]:
+  p=next(p for p in P if p['profile']=='mybatis' and p['operation']==op and p['threads']==n and p['repeat']==3)
+  values=sorted(v for t,v,a in p['response']);buckets={}
+  pair[0].plot(values,[100*(i+1)/len(values) for i in range(len(values))],label=label,color=opcolors[op])
+  for t,v,a in p['response']:buckets.setdefault(int(t),[]).append(v)
+  pair[1].plot(sorted(buckets),[statistics.mean(buckets[k]) for k in sorted(buckets)],label=label,color=opcolors[op],marker='.')
+ pair[0].set(title=f'{n} threads / full response distribution',xlabel='Response time (ms)',ylabel='Cumulative requests (%)')
+ pair[1].set(title=f'{n} threads / 1-second response trend',xlabel='Seconds since first request',ylabel='Mean response time (ms)')
+ for ax in pair:ax.grid(alpha=.2);ax.legend(fontsize=8)
+fig.suptitle('MyBatis / repeat 3 / 10-second ramp / 1 iteration',fontsize=10)
+save(fig,'mybatis-read-write-trends')
 print('Plots saved:',D['completed'],'runs')

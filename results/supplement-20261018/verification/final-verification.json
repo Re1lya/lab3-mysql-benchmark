@@ -1,0 +1,301 @@
+{
+  "time": 1792302968.3176901,
+  "exit": 0,
+  "stdout": "NODE 1\nID                            HOSTNAME        STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION\nvyl5fpnc6ztjtm3cr96g80l93     hcss-ecs-8c4a   Ready     Active                          20.10.21\nkpj0wjik7tjgqgd2a17knxnxk     hcss-ecs-1488   Ready     Active                          20.10.21\nk1l8oiiwfhjwdo3g8yehtdhx6 *   hcss-ecs-4611   Ready     Active         Leader           20.10.21\n6tu2trq8bouom35pzdwegddvn     hcss-ecs-a955   Ready     Active                          20.10.21\nNAME      SERVICES   ORCHESTRATOR\nlab       4          Swarm\nID             NAME                 MODE         REPLICAS   IMAGE                                                                                                                          PORTS\nkhquntke895s   lab_mysql            replicated   1/1        swr.cn-north-4.myhuaweicloud.com/oomall-javaee/mysql@sha256:2628694417009017902fb7c7036c6c45eef9d59587ddaa50dd2414d9ac59533c   *:3306->3306/tcp\nf460c45zv5mq   lab_node-exporter    global       4/4        lab3/node-exporter:20261017                                                                                                    \nrkxn2cswgyto   lab_productdemoaop   replicated   1/1        xmu-javaee/productdemoaop:lab3-teacher-20261018                                                                                *:8080->8080/tcp\nrtr3gtgsqsnu   lab_prometheus       replicated   1/1        lab3/prometheus:20261017                                                                                                       \nlab_productdemoaop.1.naasb655umzglw5o3cn814oxr Up About a minute\nlab_productdemoaop.1.5fy9l3le0fcj6yngz4azh5rok Exited (143) About a minute ago\nlab_productdemoaop.1.zc6a3286chcmmdtr8cn8xy6tu Exited (143) 10 minutes ago\nlab_productdemoaop.1.nr1lubn0arxlnfipqo3kbz07w Exited (143) 18 minutes ago\nlab_productdemoaop.1.mymlf5gkohe3rtdognrk627jh Exited (143) 26 minutes ago\nlab_node-exporter.k1l8oiiwfhjwdo3g8yehtdhx6.wmexcko2oja4ke8m8qizzoidm Up 16 hours\ndemo Up About a minute (healthy)\ndemo-before-server8-20261013-214336 Exited (0) 4 days ago\ndemo_running=true demo_health=healthy\nimage=sha256:b2e12d68ea0cd4154ab9604b48b474b84cf7b91407f558a89df875e48e9074dc\n{\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}jvm_threads_live_threads{persistence=\"jpa\"} 115.0\nrecovery_heartbeat_removed\n\n\nNODE 2\noriginal_products\t3913\nteacher_products\t3912\t5461\nteacher_goods\t30660\nteacher_onsale\t3914\nteacher_auto_increment\t5609\n\nMonitoring: 6 targets UP; 13 rules OK; both rule groups evaluate every 30 seconds.",
+  "nodes": [
+    {
+      "node": 1,
+      "exit": 0,
+      "stdout": "ID                            HOSTNAME        STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION\nvyl5fpnc6ztjtm3cr96g80l93     hcss-ecs-8c4a   Ready     Active                          20.10.21\nkpj0wjik7tjgqgd2a17knxnxk     hcss-ecs-1488   Ready     Active                          20.10.21\nk1l8oiiwfhjwdo3g8yehtdhx6 *   hcss-ecs-4611   Ready     Active         Leader           20.10.21\n6tu2trq8bouom35pzdwegddvn     hcss-ecs-a955   Ready     Active                          20.10.21\nNAME      SERVICES   ORCHESTRATOR\nlab       4          Swarm\nID             NAME                 MODE         REPLICAS   IMAGE                                                                                                                          PORTS\nkhquntke895s   lab_mysql            replicated   1/1        swr.cn-north-4.myhuaweicloud.com/oomall-javaee/mysql@sha256:2628694417009017902fb7c7036c6c45eef9d59587ddaa50dd2414d9ac59533c   *:3306->3306/tcp\nf460c45zv5mq   lab_node-exporter    global       4/4        lab3/node-exporter:20261017                                                                                                    \nrkxn2cswgyto   lab_productdemoaop   replicated   1/1        xmu-javaee/productdemoaop:lab3-teacher-20261018                                                                                *:8080->8080/tcp\nrtr3gtgsqsnu   lab_prometheus       replicated   1/1        lab3/prometheus:20261017                                                                                                       \nlab_productdemoaop.1.naasb655umzglw5o3cn814oxr Up About a minute\nlab_productdemoaop.1.5fy9l3le0fcj6yngz4azh5rok Exited (143) About a minute ago\nlab_productdemoaop.1.zc6a3286chcmmdtr8cn8xy6tu Exited (143) 10 minutes ago\nlab_productdemoaop.1.nr1lubn0arxlnfipqo3kbz07w Exited (143) 18 minutes ago\nlab_productdemoaop.1.mymlf5gkohe3rtdognrk627jh Exited (143) 26 minutes ago\nlab_node-exporter.k1l8oiiwfhjwdo3g8yehtdhx6.wmexcko2oja4ke8m8qizzoidm Up 16 hours\ndemo Up About a minute (healthy)\ndemo-before-server8-20261013-214336 Exited (0) 4 days ago\ndemo_running=true demo_health=healthy\nimage=sha256:b2e12d68ea0cd4154ab9604b48b474b84cf7b91407f558a89df875e48e9074dc\n{\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"}jvm_threads_live_threads{persistence=\"jpa\"} 115.0\nrecovery_heartbeat_removed\n",
+      "stderr": ""
+    },
+    {
+      "node": 2,
+      "exit": 0,
+      "stdout": "original_products\t3913\nteacher_products\t3912\t5461\nteacher_goods\t30660\nteacher_onsale\t3914\nteacher_auto_increment\t5609\n",
+      "stderr": ""
+    }
+  ],
+  "targets": {
+    "status": "success",
+    "data": {
+      "activeTargets": [
+        {
+          "discoveredLabels": {
+            "__address__": "172.31.1.202:9100",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "2s",
+            "__scrape_timeout__": "1s",
+            "job": "node"
+          },
+          "labels": {
+            "instance": "172.31.1.202:9100",
+            "job": "node"
+          },
+          "scrapePool": "node",
+          "scrapeUrl": "http://172.31.1.202:9100/metrics",
+          "globalUrl": "http://172.31.1.202:9100/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-18T05:56:07.917571025Z",
+          "lastScrapeDuration": 0.011790573,
+          "health": "up",
+          "scrapeInterval": "2s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "172.31.8.46:9100",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "2s",
+            "__scrape_timeout__": "1s",
+            "job": "node"
+          },
+          "labels": {
+            "instance": "172.31.8.46:9100",
+            "job": "node"
+          },
+          "scrapePool": "node",
+          "scrapeUrl": "http://172.31.8.46:9100/metrics",
+          "globalUrl": "http://172.31.8.46:9100/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-18T05:56:08.259938661Z",
+          "lastScrapeDuration": 0.010091874,
+          "health": "up",
+          "scrapeInterval": "2s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "172.31.12.156:9100",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "2s",
+            "__scrape_timeout__": "1s",
+            "job": "node"
+          },
+          "labels": {
+            "instance": "172.31.12.156:9100",
+            "job": "node"
+          },
+          "scrapePool": "node",
+          "scrapeUrl": "http://172.31.12.156:9100/metrics",
+          "globalUrl": "http://172.31.12.156:9100/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-18T05:56:08.792733581Z",
+          "lastScrapeDuration": 0.009605126,
+          "health": "up",
+          "scrapeInterval": "2s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "172.31.1.19:9100",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "2s",
+            "__scrape_timeout__": "1s",
+            "job": "node"
+          },
+          "labels": {
+            "instance": "172.31.1.19:9100",
+            "job": "node"
+          },
+          "scrapePool": "node",
+          "scrapeUrl": "http://172.31.1.19:9100/metrics",
+          "globalUrl": "http://172.31.1.19:9100/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-18T05:56:08.39600184Z",
+          "lastScrapeDuration": 0.010320903,
+          "health": "up",
+          "scrapeInterval": "2s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "productdemoaop:8080",
+            "__metrics_path__": "/actuator/prometheus",
+            "__scheme__": "http",
+            "__scrape_interval__": "2s",
+            "__scrape_timeout__": "1s",
+            "job": "productdemoaop"
+          },
+          "labels": {
+            "instance": "productdemoaop:8080",
+            "job": "productdemoaop"
+          },
+          "scrapePool": "productdemoaop",
+          "scrapeUrl": "http://productdemoaop:8080/actuator/prometheus",
+          "globalUrl": "http://productdemoaop:8080/actuator/prometheus",
+          "lastError": "",
+          "lastScrape": "2026-10-18T05:56:07.94990045Z",
+          "lastScrapeDuration": 0.005502729,
+          "health": "up",
+          "scrapeInterval": "2s",
+          "scrapeTimeout": "1s"
+        },
+        {
+          "discoveredLabels": {
+            "__address__": "prometheus:9090",
+            "__metrics_path__": "/metrics",
+            "__scheme__": "http",
+            "__scrape_interval__": "2s",
+            "__scrape_timeout__": "1s",
+            "job": "prometheus"
+          },
+          "labels": {
+            "instance": "prometheus:9090",
+            "job": "prometheus"
+          },
+          "scrapePool": "prometheus",
+          "scrapeUrl": "http://prometheus:9090/metrics",
+          "globalUrl": "http://prometheus:9090/metrics",
+          "lastError": "",
+          "lastScrape": "2026-10-18T05:56:08.530884212Z",
+          "lastScrapeDuration": 0.006044397,
+          "health": "up",
+          "scrapeInterval": "2s",
+          "scrapeTimeout": "1s"
+        }
+      ],
+      "droppedTargets": [],
+      "droppedTargetCounts": {
+        "node": 0,
+        "productdemoaop": 0,
+        "prometheus": 0
+      }
+    }
+  },
+  "rules": {
+    "status": "success",
+    "data": {
+      "groups": [
+        {
+          "name": "node_recording_rules",
+          "file": "/etc/prometheus/rules/recording.yml",
+          "rules": [
+            {
+              "name": "node:cpu_usage_percent",
+              "query": "(1 - sum by (instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) / sum by (instance) (rate(node_cpu_seconds_total[5m]))) * 100",
+              "health": "ok",
+              "evaluationTime": 0.001443632,
+              "lastEvaluation": "2026-10-18T05:56:04.365617924Z",
+              "type": "recording"
+            },
+            {
+              "name": "node:memory_usage_percent",
+              "query": "(1 - (node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes) / node_memory_MemTotal_bytes) * 100",
+              "health": "ok",
+              "evaluationTime": 0.000317519,
+              "lastEvaluation": "2026-10-18T05:56:04.367067995Z",
+              "type": "recording"
+            },
+            {
+              "name": "node:filesystem_usage_percent",
+              "query": "(1 - (node_filesystem_avail_bytes{mountpoint!=\"/boot\"} / node_filesystem_size_bytes{mountpoint!=\"/boot\"})) * 100",
+              "health": "ok",
+              "evaluationTime": 0.000481387,
+              "lastEvaluation": "2026-10-18T05:56:04.367389694Z",
+              "type": "recording"
+            },
+            {
+              "name": "node:network_receive_bytes:rate5m",
+              "query": "rate(node_network_receive_bytes_total[5m])",
+              "health": "ok",
+              "evaluationTime": 0.000259368,
+              "lastEvaluation": "2026-10-18T05:56:04.367876651Z",
+              "type": "recording"
+            },
+            {
+              "name": "node:network_transmit_bytes:rate5m",
+              "query": "rate(node_network_transmit_bytes_total[5m])",
+              "health": "ok",
+              "evaluationTime": 0.000230869,
+              "lastEvaluation": "2026-10-18T05:56:04.368141339Z",
+              "type": "recording"
+            },
+            {
+              "name": "node:disk_read_bytes:rate5m",
+              "query": "rate(node_disk_read_bytes_total[5m])",
+              "health": "ok",
+              "evaluationTime": 0.000111759,
+              "lastEvaluation": "2026-10-18T05:56:04.368375817Z",
+              "type": "recording"
+            },
+            {
+              "name": "node:disk_written_bytes:rate5m",
+              "query": "rate(node_disk_written_bytes_total[5m])",
+              "health": "ok",
+              "evaluationTime": 0.00011439,
+              "lastEvaluation": "2026-10-18T05:56:04.368491016Z",
+              "type": "recording"
+            }
+          ],
+          "interval": 30,
+          "limit": 0,
+          "evaluationTime": 0.003006753,
+          "lastEvaluation": "2026-10-18T05:56:04.365600534Z"
+        },
+        {
+          "name": "spring_aop_recording_rules",
+          "file": "/etc/prometheus/rules/recording.yml",
+          "rules": [
+            {
+              "name": "spring:http_requests:rate5m",
+              "query": "rate(http_server_requests_seconds_count[5m])",
+              "health": "ok",
+              "evaluationTime": 0.000318348,
+              "lastEvaluation": "2026-10-18T05:55:55.89571499Z",
+              "type": "recording"
+            },
+            {
+              "name": "spring:http_request_duration:avg5m",
+              "query": "rate(http_server_requests_seconds_sum[5m]) / rate(http_server_requests_seconds_count[5m])",
+              "health": "ok",
+              "evaluationTime": 0.000263749,
+              "lastEvaluation": "2026-10-18T05:55:55.896038818Z",
+              "type": "recording"
+            },
+            {
+              "name": "spring:jvm_memory_heap_usage_ratio",
+              "query": "jvm_memory_used_bytes{area=\"heap\"} / jvm_memory_max_bytes{area=\"heap\"}",
+              "health": "ok",
+              "evaluationTime": 0.000139639,
+              "lastEvaluation": "2026-10-18T05:55:55.896308157Z",
+              "type": "recording"
+            },
+            {
+              "name": "spring:jvm_memory_nonheap_usage_ratio",
+              "query": "jvm_memory_used_bytes{area=\"nonheap\"} / jvm_memory_max_bytes{area=\"nonheap\"}",
+              "health": "ok",
+              "evaluationTime": 0.000119759,
+              "lastEvaluation": "2026-10-18T05:55:55.896452996Z",
+              "type": "recording"
+            },
+            {
+              "name": "spring:jvm_gc_pause:rate5m",
+              "query": "rate(jvm_gc_pause_seconds_count[5m])",
+              "health": "ok",
+              "evaluationTime": 9.161e-05,
+              "lastEvaluation": "2026-10-18T05:55:55.896578285Z",
+              "type": "recording"
+            },
+            {
+              "name": "spring:jvm_threads_live_threads",
+              "query": "jvm_threads_live_threads",
+              "health": "ok",
+              "evaluationTime": 4.636e-05,
+              "lastEvaluation": "2026-10-18T05:55:55.896673695Z",
+              "type": "recording"
+            }
+          ],
+          "interval": 30,
+          "limit": 0,
+          "evaluationTime": 0.001032974,
+          "lastEvaluation": "2026-10-18T05:55:55.89568929Z"
+        }
+      ]
+    }
+  }
+}

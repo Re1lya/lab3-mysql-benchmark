@@ -1,0 +1,178 @@
+{
+  "query": "jvm_gc_pause_seconds_count",
+  "response": {
+    "status": "success",
+    "data": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {
+            "__name__": "jvm_gc_pause_seconds_count",
+            "action": "end of major GC",
+            "cause": "CodeCache GC Threshold",
+            "gc": "MarkSweepCompact",
+            "instance": "productdemoaop:8080",
+            "job": "productdemoaop",
+            "persistence": "jpa"
+          },
+          "values": [
+            [
+              1792301436.205,
+              "1"
+            ],
+            [
+              1792301438.205,
+              "1"
+            ],
+            [
+              1792301440.205,
+              "1"
+            ],
+            [
+              1792301442.205,
+              "1"
+            ],
+            [
+              1792301444.205,
+              "1"
+            ],
+            [
+              1792301446.205,
+              "1"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "jvm_gc_pause_seconds_count",
+            "action": "end of minor GC",
+            "cause": "Allocation Failure",
+            "gc": "Copy",
+            "instance": "productdemoaop:8080",
+            "job": "productdemoaop",
+            "persistence": "jpa"
+          },
+          "values": [
+            [
+              1792301412.205,
+              "1"
+            ],
+            [
+              1792301414.205,
+              "1"
+            ],
+            [
+              1792301416.205,
+              "1"
+            ],
+            [
+              1792301418.205,
+              "1"
+            ],
+            [
+              1792301420.205,
+              "1"
+            ],
+            [
+              1792301422.205,
+              "1"
+            ],
+            [
+              1792301424.205,
+              "1"
+            ],
+            [
+              1792301426.205,
+              "1"
+            ],
+            [
+              1792301428.205,
+              "1"
+            ],
+            [
+              1792301432.205,
+              "8"
+            ],
+            [
+              1792301434.205,
+              "9"
+            ],
+            [
+              1792301436.205,
+              "10"
+            ],
+            [
+              1792301438.205,
+              "11"
+            ],
+            [
+              1792301440.205,
+              "11"
+            ],
+            [
+              1792301442.205,
+              "11"
+            ],
+            [
+              1792301444.205,
+              "11"
+            ],
+            [
+              1792301446.205,
+              "11"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "jvm_gc_pause_seconds_count",
+            "action": "end of minor GC",
+            "cause": "GCLocker Initiated GC",
+            "gc": "Copy",
+            "instance": "productdemoaop:8080",
+            "job": "productdemoaop",
+            "persistence": "jpa"
+          },
+          "values": [
+            [
+              1792301428.205,
+              "1"
+            ],
+            [
+              1792301432.205,
+              "1"
+            ],
+            [
+              1792301434.205,
+              "1"
+            ],
+            [
+              1792301436.205,
+              "1"
+            ],
+            [
+              1792301438.205,
+              "1"
+            ],
+            [
+              1792301440.205,
+              "1"
+            ],
+            [
+              1792301442.205,
+              "1"
+            ],
+            [
+              1792301444.205,
+              "1"
+            ],
+            [
+              1792301446.205,
+              "1"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

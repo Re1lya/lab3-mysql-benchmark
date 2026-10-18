@@ -1,0 +1,35 @@
+<meta charset="utf-8"><style>body{font:17px Arial;margin:30px;background:#f7f8fa}pre{white-space:pre-wrap;font:16px Consolas;background:white;padding:20px}</style><h1>Service and data verification after supplementary tests</h1><p>Real recorded command output rendered as a page; not a native terminal screenshot.</p><pre>NODE 1
+ID                            HOSTNAME        STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+vyl5fpnc6ztjtm3cr96g80l93     hcss-ecs-8c4a   Ready     Active                          20.10.21
+kpj0wjik7tjgqgd2a17knxnxk     hcss-ecs-1488   Ready     Active                          20.10.21
+k1l8oiiwfhjwdo3g8yehtdhx6 *   hcss-ecs-4611   Ready     Active         Leader           20.10.21
+6tu2trq8bouom35pzdwegddvn     hcss-ecs-a955   Ready     Active                          20.10.21
+NAME      SERVICES   ORCHESTRATOR
+lab       4          Swarm
+ID             NAME                 MODE         REPLICAS   IMAGE                                                                                                                          PORTS
+khquntke895s   lab_mysql            replicated   1/1        swr.cn-north-4.myhuaweicloud.com/oomall-javaee/mysql@sha256:2628694417009017902fb7c7036c6c45eef9d59587ddaa50dd2414d9ac59533c   *:3306-&gt;3306/tcp
+f460c45zv5mq   lab_node-exporter    global       4/4        lab3/node-exporter:20261017                                                                                                    
+rkxn2cswgyto   lab_productdemoaop   replicated   1/1        xmu-javaee/productdemoaop:lab3-teacher-20261018                                                                                *:8080-&gt;8080/tcp
+rtr3gtgsqsnu   lab_prometheus       replicated   1/1        lab3/prometheus:20261017                                                                                                       
+lab_productdemoaop.1.naasb655umzglw5o3cn814oxr Up About a minute
+lab_productdemoaop.1.5fy9l3le0fcj6yngz4azh5rok Exited (143) About a minute ago
+lab_productdemoaop.1.zc6a3286chcmmdtr8cn8xy6tu Exited (143) 10 minutes ago
+lab_productdemoaop.1.nr1lubn0arxlnfipqo3kbz07w Exited (143) 18 minutes ago
+lab_productdemoaop.1.mymlf5gkohe3rtdognrk627jh Exited (143) 26 minutes ago
+lab_node-exporter.k1l8oiiwfhjwdo3g8yehtdhx6.wmexcko2oja4ke8m8qizzoidm Up 16 hours
+demo Up About a minute (healthy)
+demo-before-server8-20261013-214336 Exited (0) 4 days ago
+demo_running=true demo_health=healthy
+image=sha256:b2e12d68ea0cd4154ab9604b48b474b84cf7b91407f558a89df875e48e9074dc
+{&quot;groups&quot;:[&quot;liveness&quot;,&quot;readiness&quot;],&quot;status&quot;:&quot;UP&quot;}jvm_threads_live_threads{persistence=&quot;jpa&quot;} 115.0
+recovery_heartbeat_removed
+
+
+NODE 2
+original_products	3913
+teacher_products	3912	5461
+teacher_goods	30660
+teacher_onsale	3914
+teacher_auto_increment	5609
+
+Monitoring: 6 targets UP; 13 rules OK; both rule groups evaluate every 30 seconds.</pre>

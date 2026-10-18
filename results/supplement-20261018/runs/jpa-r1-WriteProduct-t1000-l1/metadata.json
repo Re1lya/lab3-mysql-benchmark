@@ -1,0 +1,18 @@
+{
+  "name": "jpa-r1-WriteProduct-t1000-l1",
+  "profile": "jpa",
+  "repeat": 1,
+  "operation": "WriteProduct",
+  "threads": 1000,
+  "ramp": 10,
+  "loops": 1,
+  "samples": 1000,
+  "successful": 1000,
+  "errors": 0,
+  "start": 1792300332.703,
+  "end": 1792300342.599,
+  "baseline_count": 3912,
+  "final_count": 4912,
+  "write_count": 1000,
+  "teacher_commit": "fce17e7dd6a204b91bbe89181ad6a30b09aa0270"
+}

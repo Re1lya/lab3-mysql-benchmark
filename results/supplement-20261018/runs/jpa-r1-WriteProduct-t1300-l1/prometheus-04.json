@@ -1,0 +1,125 @@
+{
+  "query": "jvm_gc_pause_seconds_count",
+  "response": {
+    "status": "success",
+    "data": {
+      "resultType": "matrix",
+      "result": [
+        {
+          "metric": {
+            "__name__": "jvm_gc_pause_seconds_count",
+            "action": "end of major GC",
+            "cause": "CodeCache GC Threshold",
+            "gc": "MarkSweepCompact",
+            "instance": "productdemoaop:8080",
+            "job": "productdemoaop",
+            "persistence": "jpa"
+          },
+          "values": [
+            [
+              1792299932.294,
+              "1"
+            ],
+            [
+              1792299942.294,
+              "1"
+            ],
+            [
+              1792299944.294,
+              "2"
+            ],
+            [
+              1792299946.294,
+              "2"
+            ],
+            [
+              1792299948.294,
+              "2"
+            ],
+            [
+              1792299950.294,
+              "2"
+            ],
+            [
+              1792299952.294,
+              "2"
+            ]
+          ]
+        },
+        {
+          "metric": {
+            "__name__": "jvm_gc_pause_seconds_count",
+            "action": "end of minor GC",
+            "cause": "Allocation Failure",
+            "gc": "Copy",
+            "instance": "productdemoaop:8080",
+            "job": "productdemoaop",
+            "persistence": "jpa"
+          },
+          "values": [
+            [
+              1792299916.294,
+              "3"
+            ],
+            [
+              1792299918.294,
+              "3"
+            ],
+            [
+              1792299920.294,
+              "3"
+            ],
+            [
+              1792299922.294,
+              "3"
+            ],
+            [
+              1792299924.294,
+              "3"
+            ],
+            [
+              1792299926.294,
+              "3"
+            ],
+            [
+              1792299928.294,
+              "3"
+            ],
+            [
+              1792299930.294,
+              "3"
+            ],
+            [
+              1792299932.294,
+              "4"
+            ],
+            [
+              1792299942.294,
+              "15"
+            ],
+            [
+              1792299944.294,
+              "16"
+            ],
+            [
+              1792299946.294,
+              "16"
+            ],
+            [
+              1792299948.294,
+              "16"
+            ],
+            [
+              1792299950.294,
+              "16"
+            ],
+            [
+              1792299952.294,
+              "16"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}
