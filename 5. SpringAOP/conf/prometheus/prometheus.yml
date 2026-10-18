@@ -1,0 +1,27 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+  scrape_timeout: 4s
+rule_files:
+  - rules/*.yml
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: [localhost:9090]
+    basic_auth:
+      username: admin
+      password_file: /etc/prometheus/self-scrape-password
+  - job_name: productdemoaop
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: [productdemoaop:8080]
+  - job_name: node
+    static_configs:
+      - targets: ['172.31.1.202:9100']
+        labels: {node: CDWY1, role: app}
+      - targets: ['172.31.8.46:9100']
+        labels: {node: CDWY2, role: mysql}
+      - targets: ['172.31.12.156:9100']
+        labels: {node: CDWY3, role: jmeter}
+      - targets: ['172.31.1.19:9100']
+        labels: {node: CDWY4, role: prometheus}

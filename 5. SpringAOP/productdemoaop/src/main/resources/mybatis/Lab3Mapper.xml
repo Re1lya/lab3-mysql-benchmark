@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab3">
+  <select id="productById" resultType="cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo">
+    SELECT * FROM goods_product WHERE id = #{value}
+  </select>
+  <select id="productsByName" resultType="cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo">
+    SELECT * FROM goods_product WHERE name = #{name}
+    <if test="shopId != null">AND shop_id = #{shopId}</if>
+    LIMIT #{limit} OFFSET #{offset}
+  </select>
+  <select id="productsByIds" resultType="cn.edu.xmu.javaee.productdemoaop.mapper.po.ProductPo">
+    SELECT * FROM goods_product WHERE id IN
+    <foreach collection="list" item="id" open="(" separator="," close=")">#{id}</foreach>
+  </select>
+  <select id="goodsByProduct" resultType="cn.edu.xmu.javaee.productdemoaop.mapper.po.GoodsPo">
+    SELECT * FROM goods_goods WHERE product_id = #{value}
+  </select>
+  <select id="onsalesByProduct" resultType="cn.edu.xmu.javaee.productdemoaop.mapper.po.OnSalePo">
+    SELECT * FROM goods_onsale WHERE product_id = #{id}
+      AND begin_time &lt; #{begin} AND end_time &gt; #{end}
+    ORDER BY end_time DESC LIMIT #{limit} OFFSET #{offset}
+  </select>
+  <!-- Omit null columns, like JPA DynamicInsert, to retain MySQL defaults. -->
+  <insert id="insertProduct" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    INSERT INTO goods_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">shop_id,</if>
+      <if test="categoryId != null">category_id,</if>
+      <if test="templateId != null">template_id,</if>
+      <if test="name != null">name,</if>
+      <if test="originalPrice != null">original_price,</if>
+      <if test="weight != null">weight,</if>
+      <if test="barcode != null">barcode,</if>
+      <if test="unit != null">unit,</if>
+      <if test="originPlace != null">origin_place,</if>
+      <if test="creator != null">creator,</if>
+      <if test="status != null">status,</if>
+      <if test="commissionRatio != null">commission_ratio,</if>
+      <if test="shopLogisticId != null">shop_logistic_id,</if>
+      <if test="freeThreshold != null">free_threshold,</if>
+    </trim>
+    <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">#{shopId},</if>
+      <if test="categoryId != null">#{categoryId},</if>
+      <if test="templateId != null">#{templateId},</if>
+      <if test="name != null">#{name},</if>
+      <if test="originalPrice != null">#{originalPrice},</if>
+      <if test="weight != null">#{weight},</if>
+      <if test="barcode != null">#{barcode},</if>
+      <if test="unit != null">#{unit},</if>
+      <if test="originPlace != null">#{originPlace},</if>
+      <if test="creator != null">#{creator},</if>
+      <if test="status != null">#{status},</if>
+      <if test="commissionRatio != null">#{commissionRatio},</if>
+      <if test="shopLogisticId != null">#{shopLogisticId},</if>
+      <if test="freeThreshold != null">#{freeThreshold},</if>
+    </trim>
+  </insert>
+  <update id="updateProduct">
+    UPDATE goods_product
+    <set>
+      <if test="shopId != null">shop_id = #{shopId},</if>
+      <if test="categoryId != null">category_id = #{categoryId},</if>
+      <if test="templateId != null">template_id = #{templateId},</if>
+      <if test="name != null">name = #{name},</if>
+      <if test="originalPrice != null">original_price = #{originalPrice},</if>
+      <if test="weight != null">weight = #{weight},</if>
+      <if test="barcode != null">barcode = #{barcode},</if>
+      <if test="unit != null">unit = #{unit},</if>
+      <if test="originPlace != null">origin_place = #{originPlace},</if>
+      <if test="status != null">status = #{status},</if>
+      <if test="commissionRatio != null">commission_ratio = #{commissionRatio},</if>
+      <if test="shopLogisticId != null">shop_logistic_id = #{shopLogisticId},</if>
+      <if test="freeThreshold != null">free_threshold = #{freeThreshold},</if>
+      <if test="modifier != null">modifier = #{modifier},</if>
+    </set>
+    WHERE id = #{id}
+  </update>
+  <delete id="deleteProduct">DELETE FROM goods_product WHERE id = #{value}</delete>
+</mapper>

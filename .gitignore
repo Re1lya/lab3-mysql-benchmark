@@ -1,0 +1,11 @@
+**/target/
+**/logs/
+**/__pycache__/
+*.pyc
+.env
+.env.*
+credentials/
+private/
+AGENTS.md
+output/
+.playwright-cli/
