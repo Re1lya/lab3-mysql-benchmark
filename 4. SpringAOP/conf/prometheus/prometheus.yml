@@ -1,0 +1,26 @@
+global:
+  scrape_interval: 2s # 默认抓取间隔
+  evaluation_interval: 5s # 默认评估间隔
+  scrape_timeout: 1s # 默认抓取超时时间
+
+# 规则文件配置
+rule_files:
+  - "rules/*.yml"
+
+scrape_configs:
+  - job_name: 'prometheus'
+    basic_auth:
+      username: admin
+      password_file: /etc/prometheus/self-scrape-password
+    static_configs:
+      - targets: ['prometheus:9090']
+  - job_name: 'productdemoaop'
+    metrics_path: '/actuator/prometheus'
+    scrape_timeout: 1s # 抓取超时时间
+    scrape_interval: 2s # 抓取间隔（避免过于频繁）
+    static_configs:
+      - targets: ['productdemoaop:8080']
+  - job_name: 'node'
+    static_configs:
+      - targets: ['172.31.1.202:9100', '172.31.8.46:9100', '172.31.12.156:9100', '172.31.1.19:9100']
+
