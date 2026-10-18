@@ -261,7 +261,7 @@ date -Is > write-end.txt
 tail -10 write-console.log
 ```
 
-预期生成 WriteProduct-1000-10-1.jtl 和对应 HTML 目录。写入成功1000次时，商品应增至4912条。记录实际成功数与新增行数是否一致。上述是现场演示命令；归档时将各组 JTL 复制为独立组目录的 samples.jtl，保持内容不变，同时保存该组日志、起止时间和参数。
+预期生成 WriteProduct-1000-10-1.jtl 和对应 HTML 目录。写入成功1000次时，商品应增至4912条。记录实际成功数与新增行数是否一致。上述是现场演示命令；归档时将各组 JTL 按“实现、读写、线程、升压、循环、轮次”命名，保持内容不变，同时保存该组日志、起止时间和参数。
 
 ### 2 每组之间复位数据
 
@@ -282,9 +282,9 @@ SQL
 
 | 测试 | 接口 | 总线程数 | 升压 | 循环 | 重复 |
 | --- | --- | --- | --- | --- | --- |
-| 基本测试 | 读和写 | 100、400、1000 | 10秒 | 1 | 各3轮 |
-| 扩展读取 | 读 | 1000、1050、1100、1150、1200 | 10秒 | 2 | 各3轮 |
-| 扩展写入 | 写 | 1000、1100、1200、1300 | 10秒 | 1 | 各3轮 |
+| 读写对比实验 | 读和写 | 100、400、1000 | 10秒 | 1 | 各3轮 |
+| 样例负载读取 | 读 | 1000、1050、1100、1150、1200 | 10秒 | 2 | 各3轮 |
+| 样例负载写入 | 写 | 1000、1100、1200、1300 | 10秒 | 1 | 各3轮 |
 
 每项都执行 jpa 和 mybatis。更换线程数、循环数时调整脚本参数；更换实现先按第四节部署并等待健康。每次重复创建新的 WORK，不重复使用已有 JTL/HTML 路径。基本测试36组18000次请求，扩展测试54组93600次请求，共90组111600次请求。
 
@@ -296,7 +296,7 @@ SQL
 
 ### 4 保存原始数据和监控
 
-每组保存原始 JTL、JMeter 控制台及诊断日志、起止时间、实现、线程、升压、循环、重复序号、成功数和数据库前后行数。自动采集的 metadata.json 保存这些参数；targets-before/after.json 保存目标状态；12个 prometheus-NN.json 保存查询及原始时序，查询窗口为开始前15秒到结束后10秒，步长2秒。
+每组保存原始 JTL、JMeter 控制台及诊断日志、起止时间、实现、线程、升压、循环、重复序号、成功数和数据库前后行数。自动采集的 metadata.json 保存这些参数；targets-before/after.json 保存目标状态；采集时使用 prometheus-NN.json 保存查询及原始时序，查询窗口为开始前15秒到结束后10秒，步长2秒。交付包保留活跃线程、CPU、内存三项，并用中文文件名标注。
 
 手动执行时，除页面截图外，应按对应起止时间调用 Prometheus query_range 保存 JSON。以下在建立隧道的本机终端执行；START、END 替换为该组实际 Unix 秒时间戳，curl -u admin 会交互询问密码：
 
@@ -304,7 +304,7 @@ SQL
 curl -u admin -G 'http://127.0.0.1:19091/api/v1/query_range' --data-urlencode 'query=node:cpu_usage_percent' --data-urlencode 'start=START' --data-urlencode 'end=END' --data-urlencode 'step=2' -o cpu.json
 ```
 
-对内存、线程等查询重复导出到不同文件。Windows PowerShell 使用 curl.exe，避免命令别名。完整12项查询可直接参照现有组中的 prometheus-00.json 至 prometheus-11.json 的 query 字段。
+对内存、线程查询重复导出到不同文件。Windows PowerShell 使用 curl.exe，避免命令别名。三项查询可参照现有组中活跃线程监控.json、CPU使用率监控.json、内存使用率监控.json 的 query 字段。
 
 ### 5 结束并恢复服务
 
@@ -327,11 +327,11 @@ curl -fsS http://127.0.0.1:8080/actuator/health
 
 ### 1 数据分析
 
-基本测试和扩展测试分别统计。按每组原始 elapsed 计算均值、P95等分位数、最大值和吞吐量，保留三轮重复结果。总线程数不等于持续活跃并发数；吞吐量也不直接代表系统最大容量。
+报告的基本测试对应材料包“01_读写对比实验”，扩展测试对应“02_参考样例负载测试”，两批分别统计。按每组原始 elapsed 计算均值、P95等分位数、最大值和吞吐量，保留三轮重复结果。总线程数不等于持续活跃并发数；吞吐量也不直接代表系统最大容量。
 
 扩展测试的预设判据为：全部请求中至少80%同时满足业务成功和 elapsed≤40ms，一个配置三轮均满足才算通过。原报告18个扩展配置中13个通过；未达标轮次原始数据同样保存。elapsed-Connect仅作辅助指标，不等于SQL执行时间。
 
-统计脚本为 analyze-teacher.mjs、analyze-supplement.mjs，独立复核脚本为 verify-teacher-results.mjs、verify-supplement-results.mjs。绘图脚本为 plot-teacher.py、plot-supplement.py，报告脚本为 build-teacher-report.py。这些脚本使用固定证据目录；复算前将基本/扩展 runs、analysis、reports、screenshots、logs及批次记录分别恢复到 output/playwright/lab3-teacher-20261018 和 output/playwright/lab3-supplement-20261018。原始JTL只读保存，不修改后沿用旧统计。
+统计脚本为 analyze-teacher.mjs、analyze-supplement.mjs，独立复核脚本为 verify-teacher-results.mjs、verify-supplement-results.mjs。绘图脚本为 plot-teacher.py、plot-supplement.py，报告脚本为 build-teacher-report.py。这些脚本使用固定证据目录；复算前按完整性校验/文件名对照表.csv，把整理后文件复制回独立工作目录内的原路径。对照实验和样例负载的目录分别为 output/playwright/lab3-teacher-20261018 和 output/playwright/lab3-supplement-20261018。原始JTL只读保存，不修改后沿用旧统计。
 
 ### 2 验收材料
 
@@ -340,7 +340,7 @@ curl -fsS http://127.0.0.1:8080/actuator/health
 解压完整材料包后，使用Python3执行文件校验：
 
 ```bash
-python '完整性校验/verify.py'
+python '完整性校验/校验文件.py'
 ```
 
-查看顺序为：报告中的测试项 → 测试组索引 → samples.jtl和metadata.json → 对应JMeter HTML → 监控JSON及截图。功能测试结果另见过程记录/基本测试/logs/test-jpa.log、test-mybatis.log和tests-final.json，两套实现各16项通过。
+查看顺序为：报告中的测试项 → 测试组索引 → 中文命名的JTL和测试参数与数据库核验.json → 对应JMeter HTML → 监控JSON及截图。功能测试结果另见过程记录/01_读写对比实验/功能测试/下的JPA功能测试.log、MyBatis功能测试.log和功能测试汇总.json，两套实现各16项通过。
