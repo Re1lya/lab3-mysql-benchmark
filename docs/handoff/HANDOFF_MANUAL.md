@@ -1,81 +1,44 @@
-# 实验三完整材料与重新部署手册
+# 实验三 MySQL读写性能测试操作手册
 
-本手册供小组成员复现实验和现场验收使用。执行命令请优先从同目录的详细操作步骤.md复制，PDF中的长命令可能自动折行。最终提交报告为“实验报告”目录中的精简版 Word 和 PDF，共 10 页；报告使用的全部原始请求数据单独放在“原始数据”目录，基本测试与扩展测试分别保存。
+本手册按《实验三：MySQL读写性能测试》的顺序组织：实验准备 → 安装 JMeter → 参数设置 → 编译与部署 → 配置 Prometheus → 执行测试 → 整理数据和报告。命令针对本组现有四台服务器，供组员重新部署和现场演示使用。长命令请从同目录的详细操作步骤.md复制。
 
-## 1 能否按照指导书重新部署
+## 一 实验准备
 
-**现有四台服务器具备重新部署所需的主要条件，可以按指导书的流程，结合本手册中的环境适配步骤操作；不能逐字复制指导书里的示例命令。** 本次整理进行了只读检查，没有重启服务，也没有重新执行整套部署和压测。因此，以下结论是部署条件核对结果，不是一次新的全流程部署通过记录。
+对应指导书第 1 页。实验使用两个接口：GET /shops/{shopid}/products/{id} 查询商品，以及 POST /shops/{shopid}/products 新建商品。对 JPA、MyBatis 分别执行相同读写测试，比较响应时间、吞吐量与服务器资源使用情况。
 
-2026 年 10 月 18 日复核结果见“部署核验/redeployment-audit.json”：4 个 Swarm 节点 Ready；MySQL、应用、Prometheus 各 1/1，node-exporter 4/4；应用健康 UP；监控 6 个目标 UP，13 条规则 OK；构建工具、应用镜像、配置文件、overlay 网络和外部 secret 均存在。部署脚本通过 bash 语法检查，Prometheus 配置通过 promtool 检查。当前应用使用 jpa 和原运行库 oomall_demo；专用实验库 oomall_lab3_teacher 已恢复到 3912 条商品。demo 容器正常运行。
-
-本手册的命令针对**现有集群重新部署**。若重装系统或换四台空白机器，还需重建 Swarm、网络、标签、软件、镜像、挂载目录、数据库账号、外部 secret 和监控认证文件；本包不含私密凭据、完整数据库备份或所有 Docker 镜像，不能当作空白机器的一键恢复包。
-
-### 指导书与本环境的对应关系
-
-| 指导书位置 | 要求或示例 | 本环境执行方式 |
-| --- | --- | --- |
-| 第 1 页 | 编译测试、应用、数据库、监控分机 | CDWY3、CDWY1、CDWY2、CDWY4；四台均 2 核 2 GiB |
-| 第 2 页 | 安装 JMeter 5.6.3，按内存设置 JVM | 已安装；JMeter 堆 256–768 MiB，不能照抄 2–4 GiB 示例 |
-| 第 2 页 | 修改测试服务器地址 | 已适配到应用私网 172.31.1.202:8080 |
-| 第 3 页 | clonefactory、core、应用构建 | 使用 build-teacher.sh；package 加 docker build 完成打包 |
-| 第 3 页 | pre-integration-test 构建阶段 | 原阶段含旧镜像清理，本环境保留镜像并单独构建，便于恢复 |
-| 第 3 页 | Prometheus 登录和监控 | 使用已配置的独立密码，不是 admin/admin；6 目标、13 规则 |
-| 第 3 页 | JMeter 路径和启动脚本 | 实际目录是 /root/spring-fundamentals/4. SpringAOP/jmeter，注意空格及大小写 |
-| 第 3 页 | 1000 线程、10 秒升压、1 循环 | 保留该示例；参数使用 -J，使 JMX 的 __P 正确取值 |
-| 第 3 页 | 写测试计划 | 已修正 rampup.period 拼写，清除 Windows 结果绝对路径 |
-| 第 4 页 | 程序 Git 地址、原始 JTL、实验报告 | 公共仓库、原始数据子目录、精简报告均已提供 |
-
-历史文件名含 teacher 的目录或脚本是既有技术标识，不代表另有一套最终报告口径。仅使用本包中的两批最终数据，早期探索性测试不属于提交数据。
-
-## 2 材料怎么查
-
-| 目录 | 用途 |
-| --- | --- |
-| 实验报告 | 精简版 Word 与 PDF，检查时优先打开 PDF |
-| 原始数据 | 90 组原始 JTL、逐组元数据、日志、监控 JSON；索引和哈希清单 |
-| 统计与图表 | 基本测试和扩展测试分别统计的 CSV、JSON、PNG、PDF |
-| JMeter可视化报告 | 每组独立 HTML，打开对应目录的 index.html，保留全部资源文件 |
-| 过程截图 | JMeter、Prometheus 实际页面及明确标注的日志页面截图 |
-| 过程记录 | 采集计划、完成记录、恢复记录、原始操作日志、截图页面来源 |
-| 部署核验 | 本次只读服务器检查结果，含首次检查命令兼容性记录 |
-| 操作手册 | 完整部署与测试步骤的 Word 和 PDF 版本 |
-| 实验程序 | 本次程序、构建与部署脚本、测试计划、监控规则、原始商品 SQL |
-| 完整性校验 | 本包逐文件 SHA-256 和校验程序 |
-
-公开仓库：https://github.com/Re1lya/lab3-mysql-benchmark 。程序对应课程提交 fce17e7dd6a204b91bbe89181ad6a30b09aa0270，增加 MyBatis 实现、环境适配和实验工具。教师仓库只拉取，不推送实验改动。公开仓库中的 JTL 为 gzip 无损压缩，本包已保留直接可读的 samples.jtl。
-
-两批共 **90 组、111600 条请求，0 次业务断言失败**：基本测试 36 组 18000 条；扩展测试 54 组 93600 条。扩展性能判据未通过的轮次同样保留，不能只展示较快轮次。请求成功不等于响应时间判据达标。
-
-检查顺序建议：打开报告 → 根据“原始数据/测试组索引.csv”定位对应组 → 打开 samples.jtl → 查看 metadata.json 中线程、循环、框架及数据库行数 → 打开该组 HTML → 对照统计表、监控 JSON 和截图。截图用于说明过程，原始 JTL 是请求数据依据。
-
-## 3 机器与凭据准备
-
-| 机器 | 用途 | 公网 SSH 地址 | 内网地址 |
+| 指导书角色 | 本组服务器 | SSH 公网地址 | 私网地址 |
 | --- | --- | --- | --- |
-| CDWY1 | Swarm Manager 和应用 | 120.46.82.71 | 172.31.1.202 |
-| CDWY2 | MySQL | 120.46.146.243 | 172.31.8.46 |
-| CDWY3 | Maven 编译和 JMeter | 120.46.213.158 | 172.31.12.156 |
-| CDWY4 | Prometheus | 124.70.102.248 | 172.31.1.19 |
+| A 编译和 JMeter | CDWY3 | 120.46.213.158 | 172.31.12.156 |
+| B 应用 | CDWY1 | 120.46.82.71 | 172.31.1.202 |
+| C MySQL | CDWY2 | 120.46.146.243 | 172.31.8.46 |
+| D Prometheus | CDWY4 | 124.70.102.248 | 172.31.1.19 |
 
-四台均为 Ubuntu 18.04.6、Docker 20.10.21。CDWY3 为 JDK 21、Maven 3.9.16、JMeter 5.6.3；MySQL 9.2.0。应用镜像自带 Java 21，编译机 Java 与容器运行时的补丁版本可不同。
+四台均为 Ubuntu 18.04.6、2 核 2 GiB、Docker 20.10.21。编译机使用 JDK 21、Maven 3.9.16、JMeter 5.6.3；数据库为 MySQL 9.2.0。服务器源码目录统一为 /root/spring-fundamentals，当前实验工程为 4. SpringAOP，包含空格，命令中必须加引号。
 
-先由环境维护者向操作组员私下提供 SSH、应用数据库和 Prometheus 凭据。材料包不提供密码。现有部署依赖 CDWY1 的 /root/.config/lab3/deploy.env（权限 600，仅设置 MYSQL_ROOT_PASSWORD）和 Swarm secret lab3_app_properties_v1；CDWY4 的 /root/prometheus/web.yml 及 self-scrape-password。已有配置直接复用，不要重新生成不一致密码。
+SSH、数据库和 Prometheus 密码由环境维护者私下提供，不写入报告。现有集群已经准备好 overlay 网络 javaee-proxy、节点标签、MySQL 数据目录、应用 secret lab3_app_properties_v1、CDWY1 私密配置 /root/.config/lab3/deploy.env，以及 CDWY4 监控认证配置。重新部署时复用这些配置。若重装系统，应先恢复这些前提，再执行本手册。
 
-Windows 可以使用 ssh root@公网地址交互登录。含中文文件使用 SFTP 传输，服务器命令和批次名使用 ASCII。docker node、service、stack 命令只在 CDWY1 执行；docker ps、exec、logs 在容器所在节点执行。不能把 docker compose 当作此环境的部署入口，也不要使用旧实验二或旧 5. SpringAOP 部署文件。
+### 1 检查现有服务
 
-## 4 部署前记录和备份
+登录 CDWY1，记录实验前状态。集群管理命令只在此节点执行。
 
-提前约定验收时间。以下命令会写备份或更新课程服务；先确认没有其他成员正在实验。仅正式性能采集需要暂停 demo，完成后恢复其原状态。
+```bash
+ssh root@120.46.82.71
+docker node ls
+docker service ls
+docker ps --format '{{.Names}} {{.Status}}'
+```
 
-CDWY1 记录节点、服务和旧应用配置，并保存应用旧镜像标签。服务配置导出可能含私密内容，备份留在服务器，不加入提交材料。
+预期：4 个节点 Ready，lab_mysql、lab_productdemoaop、lab_prometheus 各 1/1，lab_node-exporter 为 4/4。确认现场无人正在测试，再更新应用。截取节点和服务状态，保存到新建的实验记录目录。
+
+### 2 备份配置和数据
+
+CDWY1 执行以下命令，记录输出的备份路径。完整服务配置可能含敏感内容，只保存在服务器，不交给公开仓库。
 
 ```bash
 STAMP=$(date +%Y%m%d-%H%M%S)
-BACK=/root/backups/lab3-check-$STAMP
+BACK=/root/backups/lab3-$STAMP
 mkdir -p "$BACK"
 chmod 700 "$BACK"
-docker node ls > "$BACK/nodes.txt"
-docker service ls > "$BACK/services.txt"
 docker service inspect lab_productdemoaop > "$BACK/app-spec.json"
 docker inspect demo --format '{{.State.Running}}' > "$BACK/demo-running.txt"
 cp -a '/root/spring-fundamentals/4. SpringAOP/conf/docker' "$BACK/"
@@ -83,11 +46,11 @@ docker tag xmu-javaee/productdemoaop:lab3-teacher-20261018 lab3/app:before-$STAM
 printf '%s\n' "$BACK"
 ```
 
-CDWY2 对专用实验库做逻辑备份。不要删除 MySQL 数据目录，不要对现有数据目录重复执行首次初始化脚本。
+CDWY2 备份专用实验库，保留此次备份路径：
 
 ```bash
 STAMP=$(date +%Y%m%d-%H%M%S)
-BACK=/root/backups/lab3-check-$STAMP
+BACK=/root/backups/lab3-$STAMP
 mkdir -p "$BACK"
 chmod 700 "$BACK"
 CID=$(docker ps -q --filter name=lab_mysql | head -1)
@@ -95,45 +58,100 @@ docker exec "$CID" sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysqldump -uroot --si
 test -s "$BACK/experiment.sql"
 ```
 
-## 5 编译和镜像准备
+## 二 安装和检查JMeter
 
-现有服务器源码在 /root/spring-fundamentals。材料包“实验程序”是可供比对和恢复的源码快照。需要同步时先备份该目录，再用 SFTP 上传选定文件，shell 脚本使用 LF 换行；不要直接覆盖私密环境文件。公开仓库也可检出到新目录进行比对，构建脚本中的绝对路径须随目录调整。
-
-CDWY3 执行：
+对应指导书第 2 页第 1 步。在 CDWY3 执行：
 
 ```bash
 source /etc/profile.d/lab3-tools.sh
 java -version
 mvn -version
 jmeter --version
-cd /root/spring-fundamentals
-bash deploy/lab3/build-teacher.sh > /root/lab3-rebuild.log 2>&1
-tail -40 /root/lab3-rebuild.log
-docker image inspect xmu-javaee/productdemoaop:lab3-teacher-20261018 --format '{{.Id}}'
 ```
 
-脚本先安装 clonefactory，再安装 core，随后 package 和 docker build。历史成功构建镜像 ID 为 b2e12d68ea0cd4154ab9604b48b474b84cf7b91407f558a89df875e48e9074dc；重新构建受打包时间影响，ID 可能不同，应比较本次编译机和应用机是否一致，不能要求新构建总是等于历史 ID。
+预期显示 Java 21、Maven 3.9.16、JMeter 5.6.3。当前已安装，不需要重复安装。软件目录分别为 /opt/jdk-21、/opt/maven-current、/opt/apache-jmeter-5.6.3；每次新登录先 source 环境脚本。
 
-CDWY3 已保存 /opt/lab3-downloads 下的 JDK、Maven、JMeter 安装包、基础镜像归档、监控镜像归档及 Maven 缓存。当前路径 /opt/jdk-21、/opt/maven-current、/opt/apache-jmeter-5.6.3 已配置。无需重复下载或重装；离线重建还取决于 Maven 依赖缓存是否齐全，不能只凭安装包存在承诺完全断网构建成功。
+如果仅 JMeter 安装目录丢失，可使用已保存的 /opt/lab3-downloads/apache-jmeter-5.6.3.tgz。指导书使用 zip 压缩包，本组保存的是相同版本的 tgz。先确认目标目录不存在，再解压；保留的 SHA-512 文件用于核对安装包。
 
-若本次重新构建了应用，将镜像导出，使用本机 SFTP 从 CDWY3 下载再上传 CDWY1，不假设服务器间免密登录：
+```bash
+cd /opt/lab3-downloads
+sha512sum -c apache-jmeter-5.6.3.tgz.sha512
+test ! -e /opt/apache-jmeter-5.6.3 && tar -xzf apache-jmeter-5.6.3.tgz -C /opt
+source /etc/profile.d/lab3-tools.sh
+jmeter --version
+```
+
+验收记录：软件版本输出截图。安装包和工具已保留在服务器，材料包提供程序及实验数据，不包含全部软件安装包。
+
+## 三 设置实验参数
+
+对应指导书第 2 页第 2 步。以下操作在 CDWY3 完成。
+
+### 1 JVM内存
+
+先执行 free -m 查看实际内存。四台标称 2 GiB，操作系统可见内存约 1800 MiB；按实际资源设置，不使用超过机器容量的示例堆内存。
+
+```bash
+free -m
+cd '/root/spring-fundamentals/4. SpringAOP/jmeter'
+cat jmeter-command.sh
+```
+
+当前脚本中的 JVM_ARGS 为 -Xms256m -Xmx768m -Xss512k -XX:MaxMetaspaceSize=192m。直接调用 jmeter 时可设置相同 JVM_ARGS。应用 JVM 在部署文件中设置为堆 256–512 MiB，容器内存上限为 1 GiB。
+
+### 2 HTML报告时间粒度
+
+检查 /opt/apache-jmeter-5.6.3/bin/user.properties 中是否设置以下内容；若没有，先备份该文件，再添加或修改为此值：
+
+```properties
+jmeter.reportgenerator.overall_granularity=1000
+```
+
+直接生成 HTML 时也可传 -Jjmeter.reportgenerator.overall_granularity=1000。该设置控制报告图表粒度，不改变服务器监控的抓取周期。
+
+### 3 测试计划地址和参数
+
+用编辑器检查 ReadProduct.jmx、WriteProduct.jmx 的用户变量 hostname=172.31.1.202、port=8080。读取计划使用同目录的 products.csv；运行时保留 CSV 与 JMX 的相对位置。不要随意更改随机写载荷和业务断言。
+
+本组适配文件已统一使用 thread.num、rampup.period、loop.count；脚本通过 -J 传入 JMeter 属性。保留读取 HTTP 200 且 errno=0、写入 HTTP 201 的断言，结果输出到本次目录。验收记录：JVM 参数、地址和线程参数截图。
+
+## 四 编译和部署应用
+
+对应指导书第 3 页第 3 步。先在 CDWY3 编译，再把镜像传到 CDWY1 部署。
+
+### 1 安装依赖并构建镜像
+
+```bash
+source /etc/profile.d/lab3-tools.sh
+export MAVEN_OPTS='-Xmx640m -XX:MaxMetaspaceSize=256m'
+cd /root/spring-fundamentals
+mvn -B -ntp -f clonefactory/pom.xml -Dmaven.compiler.release=21 -Dmaven.test.skip=true install
+mvn -B -ntp -f '4. SpringAOP/pom.xml' -Djava.version=21 -pl core -am -Dmaven.test.skip=true install
+mvn -B -ntp -f '4. SpringAOP/pom.xml' -Djava.version=21 -Dmaven.test.skip=true package
+docker build --build-arg JAR_FILE=target/productdemoaop-0.0.1-SNAPSHOT.jar -t xmu-javaee/productdemoaop:lab3-teacher-20261018 '4. SpringAOP/productdemoaop'
+```
+
+上述命令已封装到 deploy/lab3/build-teacher.sh，也可直接运行该脚本。每步必须成功后再执行下一步。指导书用 pre-integration-test 打包镜像；本工程该阶段还会删除旧镜像，因此这里用 package 加 docker build 完成打包，保留旧镜像用于回退。截取 BUILD SUCCESS 和镜像构建结果。
+
+### 2 传输镜像
+
+CDWY3 导出镜像，通过本机 SFTP 下载后上传 CDWY1。服务器之间不假设免密登录。
 
 ```bash
 # CDWY3
-docker save xmu-javaee/productdemoaop:lab3-teacher-20261018 | gzip > /root/lab3-app-rebuilt.tar.gz
-sha256sum /root/lab3-app-rebuilt.tar.gz
-# SFTP transfer via the operator computer
-# CDWY1
-sha256sum /root/lab3-app-rebuilt.tar.gz
-gzip -dc /root/lab3-app-rebuilt.tar.gz | docker load
+docker save xmu-javaee/productdemoaop:lab3-teacher-20261018 | gzip > /root/lab3-app.tar.gz
+sha256sum /root/lab3-app.tar.gz
+# After SFTP transfer, on CDWY1
+sha256sum /root/lab3-app.tar.gz
+gzip -dc /root/lab3-app.tar.gz | docker load
 docker image inspect xmu-javaee/productdemoaop:lab3-teacher-20261018 --format '{{.Id}}'
 ```
 
-两端 tar.gz 哈希及镜像 ID 应一致。如果使用原有已验证镜像，省略重建与传输。重建覆盖了同名标签时，stack deploy 可能不触发更换容器；需在更新配置后执行 docker service update --force lab_productdemoaop，并检查新容器实际镜像 ID。仅更改配置时仍须先 stack deploy，force 不能替代配置更新。
+两端归档文件哈希及镜像 ID 应一致。重新构建可能产生不同于旧镜像的 ID，这是正常现象；应比较本轮两台机器的结果。
 
-## 6 数据库检查与部署两种实现
+### 3 检查实验数据库
 
-CDWY2 只读检查专用库：
+在 CDWY2 执行：
 
 ```bash
 CID=$(docker ps -q --filter name=lab_mysql | head -1)
@@ -145,81 +163,111 @@ SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA='oomall_
 SQL
 ```
 
-预期依次为 3912 和 5461、30660、3914、5609。原运行库 oomall_demo 当前商品 3913 条，不作为本次性能实验的初始库。重新部署无需重复导入数据。新建专用库时使用“实验程序/data/teacher-product.sql.gz”，先核对 SQL 的目标库语句，再创建空库、导入和授权；禁止把导入命令用于现有业务库。MySQL 9.2 修改密码使用 SET PASSWORD ... = '新密码'，不使用 PASSWORD()。
+预期依次为 3912/5461、30660、3914、5609。专用库名中的 teacher 是已有数据库名称，命令中保持不变。原运行库 oomall_demo 当前商品数为 3913，不用于正式性能测试。
 
-CDWY1 部署 JPA 到专用库：
+重新部署不需要重新初始化 MySQL。若专用库确实丢失，先恢复实验前备份；初次创建空库才使用材料中的 data/teacher-product.sql.gz，并给应用账号授权。不要覆盖原运行库或删除 MySQL 数据目录。保存初始行数截图。
+
+### 4 部署JPA与MyBatis
+
+在 CDWY1 执行：
 
 ```bash
 cd /root/spring-fundamentals
-PERSISTENCE=jpa LAB_DATABASE=oomall_lab3_teacher LAB3_BLOCK=acceptance-jpa bash deploy/lab3/deploy-teacher.sh
+PERSISTENCE=jpa LAB_DATABASE=oomall_lab3_teacher LAB3_BLOCK=check-jpa bash deploy/lab3/deploy-teacher.sh
 docker service ls
 docker service ps lab_productdemoaop
 curl -fsS http://127.0.0.1:8080/actuator/health
 curl -fsS http://127.0.0.1:8080/actuator/prometheus | grep '^jvm_threads_live_threads'
 ```
 
-等待应用健康 UP，指标标签 persistence="jpa"。首次启动可能需要数十秒，失败先查看本节点应用容器日志。切换 MyBatis 使用同一镜像与入口：
+等待健康 UP，确认 persistence="jpa"。如果重新构建覆盖了同名镜像，而服务没有更换容器，在上述部署后执行 docker service update --force lab_productdemoaop，等待健康并核对实际容器镜像 ID。
+
+完成 JPA 测试后，用同一入口切换 MyBatis：
 
 ```bash
-PERSISTENCE=mybatis LAB_DATABASE=oomall_lab3_teacher LAB3_BLOCK=acceptance-mybatis bash deploy/lab3/deploy-teacher.sh
+PERSISTENCE=mybatis LAB_DATABASE=oomall_lab3_teacher LAB3_BLOCK=check-mybatis bash deploy/lab3/deploy-teacher.sh
 ```
 
-同样等待健康 UP，标签应为 persistence="mybatis"。两套实现共用 Controller、Service、DAO 和 DTO；JPA 通过 Spring Data Repository 持久化，MyBatis 通过 XML SQL、SqlSessionTemplate 和事务管理器持久化。对比应保持数据、接口、参数、机器和负载计划一致。
+等待健康 UP、persistence="mybatis" 后再测试。唯一部署文件为 4. SpringAOP/conf/docker/productdemoaop-docker.yml，使用现有 Docker secret 注入应用密码。两实现共用接口、业务层和数据集，仅切换持久层。Tomcat 最大300/最小100，Druid 最大300/最小100/初始100，保留 SQL 和业务日志设置。保存两套实现的健康状态截图。
 
-应用 Tomcat 最大 300/最小 100，Druid 最大 300/最小 100/初始 100；保留业务 DEBUG 和 JPA SQL 输出；应用堆 256–512 MiB、容器上限 1 GiB。不要为了得到更快数据临时关闭 SQL 日志或改变连接池而不记录。
+## 五 配置和检查Prometheus
 
-功能验证历史记录位于“过程记录/基本测试/logs”中的 tests-final.json、test-jpa.log 和 test-mybatis.log，两套各 16 项测试通过。若修改程序，需重新执行 ProductControllerTest 与 AdminProductControllerTest，使用专用库和真实 MySQL；通过环境变量注入数据库 URL、账号、密码与 profile，不能把密码写入命令行提交记录。
+对应指导书第 3 页第 4 步。源码配置位于 4. SpringAOP/conf/prometheus，运行配置位于 CDWY4 的 /root/prometheus。需要修改时先备份运行配置，通过 SFTP 更新相应文件；保留 web.yml 和 self-scrape-password 中的现有认证设置。
 
-## 7 监控检查
+### 1 检查监控目标
 
-CDWY4 上检查配置和记录规则：
+node 任务的四个目标应为 172.31.1.202:9100、172.31.8.46:9100、172.31.12.156:9100、172.31.1.19:9100。应用目标为 productdemoaop:8080，另有 Prometheus 自身目标。修改运行配置后，在 CDWY4 检查语法：
 
 ```bash
 CID=$(docker ps -q --filter name=lab_prometheus | head -1)
 docker exec "$CID" promtool check config /etc/prometheus/prometheus.yml
-sha256sum /root/prometheus/rules/recording.yml
 ```
 
-规则文件预期 SHA-256 为 02dbf03210523be719bb2f6cce0f255370864106d6d1335ed1e4cfcd2adfb1de。修改监控配置前先备份 /root/prometheus；如确需应用修改，在 CDWY1 更新 Prometheus 服务，之后重新核查目标和规则。
+只有确实修改配置时，才到 CDWY1 执行 docker service update --force lab_prometheus 使其重启加载，然后核查目标和规则。现有配置正确时无需重复修改。
 
-本机建立 SSH 隧道后在浏览器打开 http://127.0.0.1:19091，使用单独的 Prometheus 凭据登录：
+### 2 浏览器查看和截图
+
+在本机建立隧道，浏览器打开 http://127.0.0.1:19091，使用本组 Prometheus 密码登录：
 
 ```bash
 ssh -N -L 19091:127.0.0.1:9090 root@124.70.102.248
 ```
 
-Targets 应有 4 个 node、1 个应用和 1 个 Prometheus，全部 UP；Rules 应有 13 条且无错误。查询 spring:jvm_threads_live_threads、node:cpu_usage_percent、node:memory_usage_percent，选择覆盖测试起止的时间窗口并截图。应用 target 是 productdemoaop:8080，避免误写成含下划线的服务名造成请求问题。
+Targets 页面应有 6 个目标全部 UP；Rules 页面应有 13 条规则且没有错误。按指导书依次查询：
 
-抓取周期 2 秒、全局 evaluation 5 秒，但两个规则组显式 interval 为 30 秒。CPU 使用 5 分钟 rate，内存使用 Free+Buffers+Cached。短测试中的 CPU 曲线不能解释为瞬时峰值；每 2 秒导出也不意味着记录规则每 2 秒产生一个新样本。
+```promql
+spring:jvm_threads_live_threads
+node:cpu_usage_percent
+node:memory_usage_percent
+```
 
-## 8 现场重新运行一组读写测试
+分别记录活跃线程、CPU 和内存曲线，时间窗口覆盖测试起止。抓取周期为 2 秒，全局 evaluation 为 5 秒，两个规则组实际每 30 秒评估。CPU 为 rate[5m] 平滑值，不作为十秒测试的瞬时峰值；内存口径使用 Free+Buffers+Cached。保存 Targets、Rules 和三个查询画面。
 
-以下是在新目录运行的验收样本，不覆盖本包历史数据。先确认应用已连接专用库，再暂停干扰进程。CDWY1 将 demo 原始运行状态保存在第 4 节备份中，正式测量前执行 docker stop demo；结束后仅在原状态为 true 时恢复。普通配置查看不必停 demo。
+## 六 执行读写性能测试
 
-CDWY3 执行以下读测试；JMX 中地址和 CSV 相对路径已适配，必须从 jmeter 目录运行。为了保留现场过程，可在登录后先使用 script -q -f /root/lab3-check-terminal.log 记录会话，结束时 exit；含密码的命令不要录入公开日志。
+对应指导书第 3 页第 5 步。正式采集前先确认应用 profile、专用库初始行数和监控健康。在 CDWY1 记录 demo 原运行状态后执行 docker stop demo，避免与压测争抢资源；结束后按原状态恢复。
+
+### 1 按指导书运行一组测试
+
+以下命令在 CDWY3 执行。先将测试计划及 CSV 复制到全新目录，以免覆盖旧结果。PROFILE 按当前应用实际实现填写 jpa 或 mybatis，REP 为重复轮次。
 
 ```bash
 source /etc/profile.d/lab3-tools.sh
-cd '/root/spring-fundamentals/4. SpringAOP/jmeter'
-export HEAP='-Xms256m -Xmx768m -XX:MaxMetaspaceSize=192m'
-export JVM_ARGS='-Xss512k'
+SRC='/root/spring-fundamentals/4. SpringAOP/jmeter'
 BATCH=/root/lab3-results/check-$(date +%Y%m%d-%H%M%S)
-mkdir "$BATCH"
-RUN="$BATCH/jpa-read-t1000-r1"
-mkdir "$RUN"
-date -Is > "$RUN/start.txt"
-jmeter -n -t ReadProduct.jmx -Jthread.num=1000 -Jrampup.period=10 -Jloop.count=1 -Jjmeter.save.saveservice.timestamp_format=ms -l "$RUN/samples.jtl" -j "$RUN/jmeter.log" > "$RUN/console.log" 2>&1
-date -Is > "$RUN/end.txt"
-tail -8 "$RUN/console.log"
-jmeter -g "$RUN/samples.jtl" -o "$RUN/html" -Jjmeter.reportgenerator.overall_granularity=1000
+PROFILE=jpa
+REP=1
+WORK="$BATCH/$PROFILE-r$REP"
+mkdir -p "$WORK"
+cp "$SRC/ReadProduct.jmx" "$SRC/WriteProduct.jmx" "$SRC/products.csv" "$SRC/name.csv" "$SRC/jmeter-command.sh" "$WORK/"
+cd "$WORK"
+date -Is > read-start.txt
+sh jmeter-command.sh ReadProduct 1000 10 1 > read-console.log 2>&1
+date -Is > read-end.txt
+tail -10 read-console.log
 ```
 
-预期 1000 条请求，业务断言失败 0。写测试将计划改成 WriteProduct.jmx，并使用新的 RUN 目录，如 jpa-write-t1000-r1；JPA/MyBatis 切换后也使用准确命名的新目录。JMX 已包含随机写载荷和断言，不要改成自定义固定请求体。不能把单轮通过当作完成全部实验矩阵。
+参数依次是计划名、总线程数、升压秒数、循环次数。预期生成 ReadProduct-1000-10-1.jtl 和 ReadProduct-1000-10-1/index.html，记录1000次请求，业务断言失败0。下载整个 HTML 目录后打开 index.html，不能只下载单个 HTML 文件。保存终端汇总与 Statistics、响应时间、吞吐量页面截图。
 
-每组前按第 6 节确认初始数据；写测试成功 1000 条后商品数应为 4912。保存测试后的行数证据，再复位。**下面的 SQL 只适用于已经备份、没有其他用途的 oomall_lab3_teacher 库**：
+读测试后再次确认数据库仍为3912条商品，再执行写测试：
 
 ```bash
-# CDWY2, after saving evidence and backing up the experiment database
+cd "$WORK"
+# Preserve the previous JMeter diagnostic log
+if [ -f jmeter.log ]; then mv jmeter.log read-jmeter.log; fi
+date -Is > write-start.txt
+sh jmeter-command.sh WriteProduct 1000 10 1 > write-console.log 2>&1
+date -Is > write-end.txt
+tail -10 write-console.log
+```
+
+预期生成 WriteProduct-1000-10-1.jtl 和对应 HTML 目录。写入成功1000次时，商品应增至4912条。记录实际成功数与新增行数是否一致。上述是现场演示命令；归档时将各组 JTL 复制为独立组目录的 samples.jtl，保持内容不变，同时保存该组日志、起止时间和参数。
+
+### 2 每组之间复位数据
+
+写测试后先保存行数证据，再在 CDWY2 对已经备份的专用库执行下列命令。只适用于本实验仅新增 id>5461 商品的情况：
+
+```bash
 CID=$(docker ps -q --filter name=lab_mysql | head -1)
 docker exec -i "$CID" sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql -uroot -N oomall_lab3_teacher' <<'SQL'
 DELETE FROM goods_product WHERE id>5461;
@@ -228,80 +276,71 @@ SELECT COUNT(*),MAX(id) FROM goods_product;
 SQL
 ```
 
-预期恢复为 3912、5461。该复位策略依赖实验写入仅新增 id>5461 商品；若修改业务逻辑导致更新或删除旧行，应先停止测试，从专用库备份恢复，不能仍用上述删除语句宣称恢复成功。
+预期恢复3912/5461。每轮都检查初始条件。若业务程序更新或删除了原始行，应从专用库备份恢复，不能仅删除新增行。
 
-## 9 完整测试矩阵与采集方法
+### 3 完成JPA与MyBatis对比矩阵
 
-| 批次 | 接口 | 总线程数 | 升压 | 循环 | 每配置重复 |
+| 测试 | 接口 | 总线程数 | 升压 | 循环 | 重复 |
 | --- | --- | --- | --- | --- | --- |
-| 基本测试 | 读、写 | 100、400、1000 | 10 秒 | 1 | 3 |
-| 扩展测试 | 读 | 1000、1050、1100、1150、1200 | 10 秒 | 2 | 3 |
-| 扩展测试 | 写 | 1000、1100、1200、1300 | 10 秒 | 1 | 3 |
+| 基本测试 | 读和写 | 100、400、1000 | 10秒 | 1 | 各3轮 |
+| 扩展读取 | 读 | 1000、1050、1100、1150、1200 | 10秒 | 2 | 各3轮 |
+| 扩展写入 | 写 | 1000、1100、1200、1300 | 10秒 | 1 | 各3轮 |
 
-每项均执行 jpa 和 mybatis。基本测试 2×2×3×3=36 组，扩展测试 2×(5+4)×3=54 组。这里的线程数是计划启动的总线程，不能称为持续活跃并发人数；观察 allThreads 才能辅助了解请求时的实际活动线程。
+每项都执行 jpa 和 mybatis。更换线程数、循环数时调整脚本参数；更换实现先按第四节部署并等待健康。每次重复创建新的 WORK，不重复使用已有 JTL/HTML 路径。基本测试36组18000次请求，扩展测试54组93600次请求，共90组111600次请求。
 
-原采集控制程序为 teacher-benchmark.py、supplement-benchmark.py，单组运行器为 run-teacher-case.sh、run-supplement-case.sh。程序保留随机种子、分组顺序、逐组数据复位、监控抓取、demo 暂停恢复和失败记录。初始首个分组等待 300 秒，组前等待 15 秒，组后等待 12 秒；不能表述为每组都预热 5 分钟。
+现有完整采集由 teacher-benchmark.py 和 supplement-benchmark.py 完成，配合 run-teacher-case.sh 与 run-supplement-case.sh。程序完成数据复位、参数记录、监控导出和服务恢复。原采集顺序及时间保存在过程记录；首次分组前等待300秒，组前等待15秒，组后等待12秒。
 
-**不能直接重跑这些带 20261018 路径的历史控制程序。** 新采集前复制控制程序并修改 EV（本机证据目录）、BACK（远端恢复目录）、REMOTE（远端结果目录）；同步修改运行器 out 路径和控制程序调用的运行器文件名，创建新的 BACK 目录。旧 experiment-started.json 防止误启动，不要删除它来强行重跑。每个新组都必须使用空结果目录，JMeter HTML 输出目录也必须不存在或为空。
+如果重新执行完整自动采集，复制控制程序并设置新的 EV、BACK、REMOTE 目录，修改运行器的 out 路径和调用文件名，创建 BACK 目录。不能删除旧 experiment-started.json 强行重跑。公开 remote.py 需要 LAB3_HOSTS_JSON、SSH_USER、SSH_PASS 环境变量及 paramiko；密码只从本机环境读取。
 
-公开 remote.py 从 LAB3_HOSTS_JSON 读取节点映射，从 SSH_USER、SSH_PASS 读取凭据；本机 Python 需有 paramiko。原控制程序使用本机 19090 认证代理，该代理不是 JMeter 或 Prometheus 自带服务，也未包含在源码。跨电脑重跑时应在新控制程序的 api 函数中改为第 7 节的 19091 隧道，并使用 Basic Authorization。可将 urlopen(url,...) 替换为下述逻辑，PROM_USER 和 PROM_PASSWORD 仅通过本机环境变量提供：
+控制程序原 api 函数使用本机19090认证代理。换电脑执行时，可改用第五节19091隧道，并在新控制程序中给 urllib.request.Request 添加 Basic Authorization，从 PROM_USER、PROM_PASSWORD 环境变量读取用户名和密码。先验证 targets/rules和小样本采集，再执行完整矩阵；历史控制程序不是跨电脑免配置入口。
 
-```python
-import base64, os, urllib.request
-token = base64.b64encode((os.environ['PROM_USER'] + ':' + os.environ['PROM_PASSWORD']).encode()).decode()
-req = urllib.request.Request(url, headers={'Authorization': 'Basic ' + token})
-with urllib.request.urlopen(req, timeout=30) as response:
-    d = json.load(response)
+### 4 保存原始数据和监控
+
+每组保存原始 JTL、JMeter 控制台及诊断日志、起止时间、实现、线程、升压、循环、重复序号、成功数和数据库前后行数。自动采集的 metadata.json 保存这些参数；targets-before/after.json 保存目标状态；12个 prometheus-NN.json 保存查询及原始时序，查询窗口为开始前15秒到结束后10秒，步长2秒。
+
+手动执行时，除页面截图外，应按对应起止时间调用 Prometheus query_range 保存 JSON。以下在建立隧道的本机终端执行；START、END 替换为该组实际 Unix 秒时间戳，curl -u admin 会交互询问密码：
+
+```bash
+curl -u admin -G 'http://127.0.0.1:19091/api/v1/query_range' --data-urlencode 'query=node:cpu_usage_percent' --data-urlencode 'start=START' --data-urlencode 'end=END' --data-urlencode 'step=2' -o cpu.json
 ```
 
-同时将 api 中的端口改为 19091；先验证 targets 和 rules，随后执行一个小样本，确认认证、SFTP、元数据和监控文件保存正常，再开始新矩阵。不要把本手册中的代码片段原样插入而保留原来的 urlopen 语句。
+对内存、线程等查询重复导出到不同文件。Windows PowerShell 使用 curl.exe，避免命令别名。完整12项查询可直接参照现有组中的 prometheus-00.json 至 prometheus-11.json 的 query 字段。
 
-每组保存：samples.jtl、jmeter.log、console.log、start.txt、end.txt、metadata.json、targets-before.json、targets-after.json 和 12 个 prometheus-NN.json。监控 query_range 窗口为请求开始前 15 秒至结束后 10 秒，step=2。元数据记录实现、重复轮次、接口、线程、升压、循环、成功数、时间和数据库变化。
+### 5 结束并恢复服务
 
-中止可在新 EV 目录创建 STOP_REQUESTED 文件。正常异常处理会恢复应用到 jpa/oomall_demo，并恢复原先运行的 demo。远端心跳兜底只保证尝试恢复 demo，不保证恢复应用库；断电、进程强杀或断网后必须人工执行下一节检查。
-
-## 10 结束恢复与异常排查
-
-CDWY1 恢复本次开始前的已知运行配置（若现场原状态不同，按备份恢复实际原状态）：
+先保存全部数据、日志和截图，再复位专用库。CDWY1 按实验开始前的记录恢复服务；本组正常运行配置为 jpa/oomall_demo：
 
 ```bash
 cd /root/spring-fundamentals
 PERSISTENCE=jpa LAB_DATABASE=oomall_demo LAB3_BLOCK=restored bash deploy/lab3/deploy-teacher.sh
-# Only if demo was running before the experiment
+# Run only if demo was running before the experiment
 docker start demo
 docker service ls
-docker ps --format '{{.Names}} {{.Status}}'
 curl -fsS http://127.0.0.1:8080/actuator/health
-curl -fsS http://127.0.0.1:8080/actuator/prometheus | grep '^jvm_threads_live_threads'
 ```
 
-随后检查专用库已复位，原运行库仍为 3913 条，6 个监控目标 UP，13 条规则 OK，demo 状态与开始前一致。保存恢复命令输出和截图。若重建镜像不可用，在 APP_IMAGE 环境变量中指定第 4 节保存的 lab3/app:before-时间戳 再执行部署；若更改了配置文件，先从备份恢复对应文件，再部署并验证。
+检查专用库3912条、原运行库3913条、应用UP、监控6目标UP、13条规则OK，demo回到原状态，保存截图。若本次构建无法启动，可用 APP_IMAGE 指定第一节保存的 lab3/app:before-时间戳，恢复备份配置后重新部署。异常退出也要完成恢复检查。
 
-遇到应用反复重启，先看 docker service ps，再在 CDWY1 看实际容器日志；Access denied 通常检查账号、目标库和 secret，而不是修改 MySQL 初始化环境变量。端口拒绝连接需确认应用已健康启动。监控 DOWN 检查内网、服务 DNS、账号文件和 target。JMeter 没有按指定线程执行，应检查 -J 参数、JMX __P 属性名与拼写。不要用删镜像、删数据或全局 prune 解决这些问题。
+## 七 整理数据和提交报告
 
-## 11 原始数据复核与报告生成
+对应指导书第 4 页。提交程序Git地址、原始JTL和实验报告。本组仓库为 https://github.com/Re1lya/lab3-mysql-benchmark 。各材料的位置以完整材料包根目录 README 为准。
 
-基本和扩展数据分别统计。每组按原始 elapsed 计算响应时间均值、分位数和最大值；吞吐量为样本数除以首请求开始至最后请求结束的时间。分组结果保留三轮均值及波动，不能把全部请求合并后冒充三次独立重复。具体算法以包内 analyze-teacher.mjs、analyze-supplement.mjs 为准。
+### 1 数据分析
 
-扩展测试判据在采集前规定：全部请求中至少 80% 同时满足业务成功且原始 elapsed≤40ms；一个配置须三轮都通过。18 个配置中 13 个满足，未通过组均保留。elapsed-Connect 仅为辅助指标，不等于 SQL 执行时间；JPA 的非单调变化也不支持把某个线程档位称为精确容量上限。
+基本测试和扩展测试分别统计。按每组原始 elapsed 计算均值、P95等分位数、最大值和吞吐量，保留三轮重复结果。总线程数不等于持续活跃并发数；吞吐量也不直接代表系统最大容量。
 
-原始数据/测试组索引.csv 列出每组路径、参数、样本数、失败数和 JTL 哈希。原始数据/SHA256.csv 覆盖整个原始数据子目录中的数据文件。本包完整性校验程序逐文件复核字节数和 SHA-256：
+扩展测试的预设判据为：全部请求中至少80%同时满足业务成功和 elapsed≤40ms，一个配置三轮均满足才算通过。原报告18个扩展配置中13个通过；未达标轮次原始数据同样保存。elapsed-Connect仅作辅助指标，不等于SQL执行时间。
+
+统计脚本为 analyze-teacher.mjs、analyze-supplement.mjs，独立复核脚本为 verify-teacher-results.mjs、verify-supplement-results.mjs。绘图脚本为 plot-teacher.py、plot-supplement.py，报告脚本为 build-teacher-report.py。这些脚本使用固定证据目录；复算前将基本/扩展 runs、analysis、reports、screenshots、logs及批次记录分别恢复到 output/playwright/lab3-teacher-20261018 和 output/playwright/lab3-supplement-20261018。原始JTL只读保存，不修改后沿用旧统计。
+
+### 2 验收材料
+
+报告保持精简，解释环境、设计、结果和原因；原始文件单独提交，使用测试组索引定位。现有材料含90份JTL、90份JMeter HTML和164张过程截图。过程截图包括实际页面与明确标注的日志页面，统计图另存。现场新测数据标记新日期，不覆盖已有报告的采集记录。
+
+解压完整材料包后，使用Python3执行文件校验：
 
 ```bash
-# Run at the extracted package root; Python 3 standard library only
 python '完整性校验/verify.py'
 ```
 
-需重新生成图表时，先将“原始数据/基本测试”复制到程序根目录 output/playwright/lab3-teacher-20261018/runs，将扩展测试复制到 output/playwright/lab3-supplement-20261018/runs。把对应“统计与图表”复制到各自 analysis，把对应 JMeter 可视化报告复制到各自 reports。脚本采用这些固定相对路径，单纯双击一个统计脚本不能自动识别中文材料目录。
-
-用 Node 22 执行 analyze-teacher.mjs 与 analyze-supplement.mjs；使用 verify-teacher-results.mjs、verify-supplement-results.mjs 对照 JMeter HTML 的 statistics.json。用 matplotlib 运行 plot-teacher.py、plot-supplement.py；用 python-docx 运行 build-teacher-report.py。如果还需重建 Word 报告，须将“过程截图”和“过程记录”中的 pages、logs 及批次根记录同步恢复到相应证据目录；首次重建前检查脚本依赖路径。原始报告及图表已经包含在包内，验收查看无需重建。
-
-生成 JMeter HTML 可用第 8 节的 -g 命令，或 dashboards.py；后者必须显式指定 --evidence 和 --expected 36 或 54，因为默认值属于早期实验。不要为了改报告文案重新跑性能测试，也不要编辑原始 JTL 后继续沿用旧哈希和统计。
-
-## 12 截图与验收留档
-
-现有材料保留两批共 164 张过程截图。截图包括真实 JMeter/Prometheus 页面，以及从真实 SSH 日志渲染的页面；日志页面不是原生终端截图。统计图单独保存在“统计与图表”，不冒充采集现场画面。
-
-重新验收时另建 check-日期 目录，按顺序保存：四节点和服务状态、软件版本、构建成功、两端镜像 ID、数据库初始行数、JPA/MyBatis 健康及标签、Targets/Rules、JMeter 执行结束、HTML Statistics 和响应曲线、监控时间窗口、写入后行数、最后恢复状态。截图文件名包含步骤、实现、接口和时间。密码输入、完整环境变量、secret 内容不截图、不提交。
-
-向老师展示时使用本包中的报告、原始数据和代码地址；现场重新运行产生的数据另行标明日期和参数，不冒充 10 月 18 日报告的原始采集结果。验收是否通过以老师实际检查为准。
+查看顺序为：报告中的测试项 → 测试组索引 → samples.jtl和metadata.json → 对应JMeter HTML → 监控JSON及截图。功能测试结果另见过程记录/基本测试/logs/test-jpa.log、test-mybatis.log和tests-final.json，两套实现各16项通过。

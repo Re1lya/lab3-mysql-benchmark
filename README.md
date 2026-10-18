@@ -96,6 +96,6 @@ jmeter -g ReadProduct-1000-10-1.jtl -o ReadProduct-1000-10-1 -Jjmeter.reportgene
 
 分析脚本读取原始JTL；公开目录的JTL需先解压，并按脚本中本地证据目录布局放置。统计可使用Node.js 22；绘图、报告生成另需Python、matplotlib和python-docx。最终报告按样例结构精简为10页，呈现两批90组测试的主要结果、代表性图表和结论；逐轮明细、完整截图与监控数据保留在材料目录。
 
-## 验收与重新部署
+## 实验操作与材料导航
 
-[简明材料说明与组员操作手册](docs/handoff/)包含原始数据索引、部署步骤和Docker升级评估。完整材料包中的90组原始数据已单独归档并通过SHA-256核对；此次只读检查确认现有集群主要部署条件齐备，未重新部署或升级Docker。
+[按实验三指导书编排的操作手册](docs/handoff/HANDOFF_MANUAL.md)提供安装、参数设置、编译部署、监控、测试及数据整理步骤。[材料目录](docs/handoff/HANDOFF_README.md)列出报告、基本读写测试、扩展读写测试、功能测试和截图的存放位置。
