@@ -1,0 +1,11 @@
+{
+  "groups": 90,
+  "samples": 111600,
+  "files": 14459,
+  "screenshots": 164,
+  "zip_bytes": 116364707,
+  "zip_sha256": "c5ad122f5d7e206315e46695a385c833456de4ff3d194463540169a3961feb4f",
+  "jtl_hashes_match": true,
+  "public_gzip_matches": true,
+  "zip_integrity_passed": true
+}

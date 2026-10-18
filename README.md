@@ -95,3 +95,7 @@ jmeter -g ReadProduct-1000-10-1.jtl -o ReadProduct-1000-10-1 -Jjmeter.reportgene
 补测脚本为 `supplement-benchmark.py` 与 `run-supplement-case.sh`，保留原JMX、应用镜像和监控公式。`analyze-supplement.mjs`、`verify-supplement-results.mjs`、`plot-supplement.py`用于统计、交叉核验和绘图；`build-teacher-report.py`直接整合两批结果，生成精简报告；`supplement-report.py`保留详细版的补测排版逻辑。所有脚本均在 `deploy/lab3/`。
 
 分析脚本读取原始JTL；公开目录的JTL需先解压，并按脚本中本地证据目录布局放置。统计可使用Node.js 22；绘图、报告生成另需Python、matplotlib和python-docx。最终报告按样例结构精简为10页，呈现两批90组测试的主要结果、代表性图表和结论；逐轮明细、完整截图与监控数据保留在材料目录。
+
+## 验收与重新部署
+
+[简明材料说明与组员操作手册](docs/handoff/)包含原始数据索引、部署步骤和Docker升级评估。完整材料包中的90组原始数据已单独归档并通过SHA-256核对；此次只读检查确认现有集群主要部署条件齐备，未重新部署或升级Docker。
