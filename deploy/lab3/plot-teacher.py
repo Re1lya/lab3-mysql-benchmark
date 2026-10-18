@@ -18,7 +18,7 @@ for metric,label,name in [('success_rps','Successful requests / s','throughput')
    a=sorted([g for g in D['groups'] if g['operation']==op and g['profile']==profile],key=lambda x:x['threads'])
    if a:ax.errorbar([g['threads'] for g in a],[g[metric+'_mean'] for g in a],yerr=[g[metric+'_sd'] for g in a],color=colors[profile],marker='o',capsize=4,label=profile.upper())
   ax.set(title=op,xlabel='Total threads / 10-second ramp / 1 iteration',ylabel=label,xticks=[100,400,1000]);ax.grid(alpha=.2);ax.legend()
- fig.suptitle('Teacher JMX; means across repeats; error bars = sample standard deviation',fontsize=10);save(fig,name)
+ fig.suptitle('Means across three repeats; error bars = sample standard deviation',fontsize=10);save(fig,name)
 for op in ['ReadProduct','WriteProduct']:
  chosen=[p for p in P if p['operation']==op and p['threads']==1000 and p['repeat']==3]
  if len(chosen)!=2:continue
@@ -36,7 +36,7 @@ for op in ['ReadProduct','WriteProduct']:
  axes[1].set(xlabel='Seconds since first request',ylabel='Mean response time (ms)',title='1-second response trend')
  for ax in axes:ax.grid(alpha=.2);ax.legend()
  fig.suptitle(op+' / 1000 threads / 10-second ramp / 1 iteration / repeat 3');save(fig,op+'-latency')
- for ax,title,ylabel in zip(axes2.flat,['JVM live threads','Application CPU: teacher rate[5m]','Application memory: teacher formula','Load-generator CPU: teacher rate[5m]'],['Threads','CPU (%)','Memory (%)','CPU (%)']):
+ for ax,title,ylabel in zip(axes2.flat,['JVM live threads','Application CPU: rate[5m]','Application memory usage','Load-generator CPU: rate[5m]'],['Threads','CPU (%)','Memory (%)','CPU (%)']):
   ax.set(title=title,xlabel='Seconds since first request',ylabel=ylabel);ax.axvspan(0,10,color='#dddddd',alpha=.3);ax.grid(alpha=.2);ax.legend()
  fig2.suptitle(op+' / repeat 3; CPU values include the preceding 5 minutes',fontsize=10);save(fig2,op+'-monitoring')
-print('Teacher plots saved:',D['completed'],'runs')
+print('Plots saved:',D['completed'],'runs')
