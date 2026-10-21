@@ -18,6 +18,6 @@
 
 应用入口是 `4. SpringAOP`，JMX在该目录的 `jmeter` 中；部署入口为 `deploy/lab3/deploy-teacher.sh`。环境、构建和运行步骤见操作手册。源码基于课程提交fce17e7，原始计划和配置保存在reference目录。服务器密码不入库。
 
-`deploy/lab3/analyze-final.py`从上述18份JTL重新计算统计并核对JMeter报告，需要Python及matplotlib；`build-teacher-report.py`生成报告，另需python-docx。报告PDF和DOCX已提供，可直接查看。
+`deploy/lab3/analyze-final.py`从上述18份JTL重新计算统计并核对JMeter报告，仅需Python标准库；`build-teacher-report.py`生成报告，另需python-docx。报告PDF和DOCX已提供，可直接查看。报告按样例逐档展示JMeter原生图表，并附Prometheus历史监控页面；JPA结果与框架比较见表格。截图均对应原18组实测数据。
 
 保留上游版权和文件级许可。根LICENSE为Apache-2.0，部分文件遵循其GPL-3.0声明。课程仓库：https://gitee.com/mingqcn/spring-fundamentals

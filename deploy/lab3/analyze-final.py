@@ -1,9 +1,6 @@
 """Recompute the submitted 18 cases from unmodified JTL and verify against JMeter."""
 import csv,hashlib,json,math,statistics,collections,zipfile
 from pathlib import Path
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 ROOT=Path(__file__).resolve().parents[2]
 EV=ROOT/'results/实验数据'
 if not EV.exists():EV=ROOT/'output/playwright/lab3-final-20261018'
@@ -39,31 +36,4 @@ with (OUT/'各配置测试统计.csv').open('w',encoding='utf-8-sig',newline='')
     w=csv.writer(f);w.writerow(fields)
     for r in rows:w.writerow([('JPA' if r['profile']=='jpa' else 'MyBatis')+('读取' if r['operation']=='ReadProduct' else '写入'),r['threads'],r['loops'],r['samples'],r['errors'],r['mean_ms'],r['p95_ms'],r['within40_pct'],r['success_rps']])
 (OUT/'数据核验.json').write_text(json.dumps(dict(verified_runs=18,requests=31200,jtl_hashes_unchanged=True,jmeter_counts_mean_range_throughput_match=True,database_counts_match=True),indent=2),encoding='utf8')
-plt.rcParams.update({'font.family':'DejaVu Sans','font.size':9,'axes.spines.top':False,'axes.spines.right':False,'savefig.dpi':180})
-colors={'jpa':'#2166ac','mybatis':'#d6604d'}
-for op,ns,filename in [('ReadProduct',[1000,1050,1100,1150,1200],'读取响应分布与趋势'),('WriteProduct',[1000,1100,1200,1300],'写入响应分布与趋势')]:
-    fig,axes=plt.subplots(len(ns),2,figsize=(9,1.7*len(ns)),squeeze=False)
-    for (left,right),n in zip(axes,ns):
-        for profile in ['jpa','mybatis']:
-            r=next(x for x in rows if x['operation']==op and x['threads']==n and x['profile']==profile)
-            a,_,start=raws[r['name']];values=sorted(float(x['elapsed']) for x in a)
-            left.plot(values,[100*(i+1)/len(values) for i in range(len(values))],label=profile.upper(),color=colors[profile])
-            buckets=collections.defaultdict(list)
-            for x in a:buckets[int(int(x['timeStamp'])/1000-start)].append(max(0,int(x['elapsed'])-int(x['Connect'])))
-            right.plot(sorted(buckets),[statistics.mean(buckets[k]) for k in sorted(buckets)],color=colors[profile],label=profile.upper())
-        left.axvline(40,color='gray',ls=':',lw=.7);left.axhline(80,color='gray',ls=':',lw=.7)
-        left.set(title=f'{n} threads | response percentiles',xlabel='Elapsed (ms)',ylabel='Requests (%)',ylim=(0,102))
-        right.set(title=f'{n} threads | response over time',xlabel='Seconds from first request',ylabel='Elapsed - Connect (ms)')
-        for ax in [left,right]:ax.grid(alpha=.18);ax.legend(fontsize=7,loc='best')
-    fig.tight_layout();fig.savefig(OUT/(filename+'.png'));plt.close(fig)
-fig,axes=plt.subplots(3,1,figsize=(9,5.2))
-for profile in ['jpa','mybatis']:
-    r=next(x for x in rows if x['operation']=='WriteProduct' and x['threads']==1300 and x['profile']==profile)
-    _,mon,start=raws[r['name']]
-    for ax,file,label in zip(axes,['活跃线程监控.json','CPU使用率监控.json','内存使用率监控.json'],['Live JVM threads','Application CPU (%)','Application memory (%)']):
-        d=mon[{'活跃线程监控.json':'活跃线程','CPU使用率监控.json':'CPU使用率','内存使用率监控.json':'内存使用率'}[file]]
-        candidates=[x for x in d['response']['data']['result'] if (x['metric'].get('persistence')==profile if file.startswith('活跃') else x['metric'].get('instance')=='172.31.1.202:9100')]
-        assert len(candidates)==1
-        v=candidates[0]['values'];ax.plot([t-start for t,n in v],[float(n) for t,n in v],label=profile.upper(),color=colors[profile]);ax.set_ylabel(label);ax.grid(alpha=.18);ax.legend(fontsize=8)
-axes[-1].set_xlabel('Seconds from first request');fig.tight_layout();fig.savefig(OUT/'写入测试运行监控.png');plt.close(fig)
-print('Verified 18 cases and regenerated all submitted statistics and charts')
+print('Verified 18 cases and regenerated submitted statistics')
