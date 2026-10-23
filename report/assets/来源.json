@@ -1,0 +1,111 @@
+{
+  "source": "本组修订前实验报告PDF内嵌图片",
+  "source_pdf_sha256": "c71b2d647106b98f8f2ac7078b25fd77ff669926ceb58de4e4949511bb42b808",
+  "images": [
+    {
+      "file": "original-p3-img1.png",
+      "sha256": "d95e607625e266e71ffcbb77c2029cc176b4b3002606a0290a1efa2b0db03392",
+      "source_page": 3
+    },
+    {
+      "file": "original-p3-img2.png",
+      "sha256": "c33532651f733d57c4a30e25fee7f4be0e839832b019ba5386e77d39920fd42c",
+      "source_page": 3
+    },
+    {
+      "file": "original-p4-img1.png",
+      "sha256": "f3990ce272c09b883ac1749f7b78ffd3a296f911404b1a5502e36061bf7d7fd6",
+      "source_page": 4
+    },
+    {
+      "file": "original-p4-img2.png",
+      "sha256": "6d8f988f6b13a8b0d74bc588f5ae91a2822a16ada2a1202e7acdc138e11efcda",
+      "source_page": 4
+    },
+    {
+      "file": "original-p5-img1.png",
+      "sha256": "8a9eb2bf3a33c2444291ae5e7c5fa61331d306634c8c4ebe72d3c172f4a95266",
+      "source_page": 5
+    },
+    {
+      "file": "original-p5-img2.png",
+      "sha256": "c39f28e954ef2b1a741f3fcd3f8df0ff95e9e53be626b8c312dee3cb2e04e5e5",
+      "source_page": 5
+    },
+    {
+      "file": "original-p6-img1.png",
+      "sha256": "5fa08433e4473bd8f559ef52d6d4f634134d2b68e9ddd9da86e51f5c3605586e",
+      "source_page": 6
+    },
+    {
+      "file": "original-p6-img2.png",
+      "sha256": "4367d631151c1f155c3805794b5034357d90bc2cb13b8efebb22daee2d952530",
+      "source_page": 6
+    },
+    {
+      "file": "original-p7-img1.png",
+      "sha256": "05b5ddbddf41ff6853374bc5a11d12a098174686da698217b5e1fb0a1f967ed3",
+      "source_page": 7
+    },
+    {
+      "file": "original-p7-img2.png",
+      "sha256": "7e67514adcd6e954c74ea9dba0a27f814d9266de6cf889766fd63b5c5f425bd2",
+      "source_page": 7
+    },
+    {
+      "file": "original-p8-img1.png",
+      "sha256": "c2d0924ceda29cb4930caa1a9441f1e2f1a6d92e5d84d5a514fd0b3f12389a50",
+      "source_page": 8
+    },
+    {
+      "file": "original-p8-img2.png",
+      "sha256": "9d609840b305aa6258e88db20c1e00dae559268fe511966c3dd9b7f727e2e22b",
+      "source_page": 8
+    },
+    {
+      "file": "original-p9-img1.png",
+      "sha256": "0c925d8e39049c23371e2bed50bb606a9f04b6d097b6c1d6e12b4956338c1f33",
+      "source_page": 9
+    },
+    {
+      "file": "original-p9-img2.png",
+      "sha256": "f1bfac80c69b386c6e0721fc92555fffc02a3de7313d462c7e4c689dcd26f895",
+      "source_page": 9
+    },
+    {
+      "file": "original-p10-img1.png",
+      "sha256": "ea70057c4ab1ce27abdc8993c134953dcb62ddafef521887c13c034e4d555f8b",
+      "source_page": 10
+    },
+    {
+      "file": "original-p10-img2.png",
+      "sha256": "07bde5f7bc381e95f62559e31020c6fe3c51dddd2b7de55697790e2d718ac1f2",
+      "source_page": 10
+    },
+    {
+      "file": "original-p11-img1.png",
+      "sha256": "5e53e0cb0d53508fa85a084d6b48905986c0a8aeb5c7db036f4568cafdd97119",
+      "source_page": 11
+    },
+    {
+      "file": "original-p11-img2.png",
+      "sha256": "99ee99f4ef9c32c188af810f16af3fd459ab188439efccdb33e97243aeee0fe9",
+      "source_page": 11
+    },
+    {
+      "file": "Im850.png",
+      "sha256": "bcd66ef3e34d9a96cbe543a566940c6adafffbff3dbc30abcbed80aed7410525",
+      "source_page": 13
+    },
+    {
+      "file": "Im855.png",
+      "sha256": "9886a23ee6aa8e289f754aa7fda4989801d511225243dfb5c4af090ec33bbe40",
+      "source_page": 13
+    },
+    {
+      "file": "Im867.png",
+      "sha256": "15c022987702de48bae3b574e9efd5ba601067842d1a5e6f3be752a37daefa95",
+      "source_page": 14
+    }
+  ]
+}
