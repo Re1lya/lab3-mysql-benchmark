@@ -6,6 +6,7 @@
 | --- | --- |
 | 实验报告 | [修订版PDF](report/实验三_MySQL读写性能测试报告.pdf) / [可编辑Word](report/实验三_MySQL读写性能测试报告.docx) |
 | 要求与数据核查 | [实验三要求核查](report/实验三要求核查.md) |
+| 负载与压力测试答辩 | [按报告页码整理的简明问答](docs/handoff/实验三_负载与压力测试答辩补充.md) |
 | 同批三轮完整记录 | [54组JTL、日志、统计与SHA256清单](results/实验数据/三轮复核/) |
 | 部署测试操作手册与验收展示说明 | [docs/handoff](docs/handoff/) |
 | JPA读取、写入原始数据 | [01_JPA读取](results/实验数据/原始数据/01_JPA读取/)、[02_JPA写入](results/实验数据/原始数据/02_JPA写入/) |
